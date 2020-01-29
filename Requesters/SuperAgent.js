@@ -9,7 +9,7 @@ class Request {
       console.log(
         {
           message: error.message,
-          details: error.options
+          details: error.response.body
         }
       );
     }
@@ -23,7 +23,21 @@ class Request {
       console.log(
         {
           message: error.message,
-          details: error.options
+          details: error.response.body
+        }
+      );
+    }
+  }
+
+  async put(url, data = null, headers = null) {
+    try {
+      const response = await request.put(url).send((data == null) ? {} : data).set(headers);
+      return response.body;
+    } catch (error) {
+      console.log(
+        {
+          message: error.message,
+          details: error.response.body
         }
       );
     }
@@ -37,7 +51,7 @@ class Request {
       console.log(
         {
           message: error.message,
-          details: error.options
+          details: error.response.body
         }
       );
     }
