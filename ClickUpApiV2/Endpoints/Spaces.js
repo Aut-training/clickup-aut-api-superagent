@@ -30,7 +30,7 @@ class Spaces {
    * spaces.createSpace("My Space");
    */
   async createSpace(teamId, spaceName) {
-    const response = await this.request.post(`${this.baseUrl}/team/${teamId}${pathUrl}`, {
+    const spaceCreated = await this.request.post(`${this.baseUrl}/team/${teamId}${pathUrl}`, {
       'name': spaceName,
       'multiple_assignees': true,
       'features': {
@@ -66,7 +66,7 @@ class Spaces {
         }
       }
     }, { 'Authorization': this.apiKey });
-    return response;
+    return spaceCreated;
   }
 
   /**
@@ -82,8 +82,8 @@ class Spaces {
    * spaces.updateSpace(123, "My Space edited");
    */
   async updateSpace(spaceId, name) {
-    const response = await this.request.put(`${this.baseUrl}${pathUrl}/${spaceId}`, { name: name }, { 'Authorization': this.apiKey });
-    return response;
+    const spaceUpdated = await this.request.put(`${this.baseUrl}${pathUrl}/${spaceId}`, { name: name }, { 'Authorization': this.apiKey });
+    return spaceUpdated;
   }
 
   /**
@@ -98,8 +98,8 @@ class Spaces {
    * spaces.deleteSpace(123);
    */
   async deleteSpace(spaceId) {
-    const response = await this.request.delete(`${this.baseUrl}${pathUrl}/${spaceId}`, { archived: false }, { 'Authorization': this.apiKey });
-    return response;
+    const spaceDeleted = await this.request.delete(`${this.baseUrl}${pathUrl}/${spaceId}`, { archived: false }, { 'Authorization': this.apiKey });
+    return spaceDeleted;
   }
 
   /**
@@ -114,8 +114,8 @@ class Spaces {
    * spaces.getSpaces("TeamID");
    */
   async getSpaces(teamId) {
-    const response = await this.request.get(`${this.baseUrl}/team/${teamId}${pathUrl}`, { archived: false }, { 'Authorization': this.apiKey });
-    return response.spaces;
+    const spaces = await this.request.get(`${this.baseUrl}/team/${teamId}${pathUrl}`, { archived: false }, { 'Authorization': this.apiKey });
+    return spaces.spaces;
   }
 
   /**
@@ -130,8 +130,8 @@ class Spaces {
    * spaces.getSpace(123);
    */
   async getSpace(spaceId) {
-    const response = await this.request.get(`${this.baseUrl}${pathUrl}/${spaceId}`, { archived: false }, { 'Authorization': this.apiKey });
-    return response;
+    const space = await this.request.get(`${this.baseUrl}${pathUrl}/${spaceId}`, { archived: false }, { 'Authorization': this.apiKey });
+    return space;
   }
 }
 
