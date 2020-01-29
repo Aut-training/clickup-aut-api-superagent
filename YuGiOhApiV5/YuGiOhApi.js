@@ -1,6 +1,6 @@
 const cardInfo = require('./Endpoints/CardInfo');
 const cardSet = require('./Endpoints/CardSet');
-const request = require('../Requesters/Request');
+const request = require('../Requesters/SuperAgent');
 
 class YuGiOhApi {
   get version() {

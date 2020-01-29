@@ -1,6 +1,6 @@
 const spaces = require('./Endpoints/Spaces');
 const folders = require('./Endpoints/Folders');
-const request = require('../Requesters/Axios');
+const request = require('../Requesters/SuperAgent');
 const apiKey = 'pk_3023811_ND9FAB6MPKZRPJXSC81IUEVCQNN3O1Q3';
 
 class ClickUpApi {
