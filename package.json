@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.19.1",
+    "jsdoc": "^3.6.3",
     "request": "^2.88.0",
     "request-promise": "^4.2.5",
     "superagent": "^5.2.1"
