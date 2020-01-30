@@ -1,5 +1,6 @@
 const spaces = require('./Endpoints/Spaces');
 const folders = require('./Endpoints/Folders');
+const lists = require('./Endpoints/Lists');
 const request = require('../Requesters/SuperAgent');
 const apiKey = 'pk_3023811_ND9FAB6MPKZRPJXSC81IUEVCQNN3O1Q3';
 
@@ -44,6 +45,14 @@ class ClickUpApi {
    */
   get folders() {
     return new folders(this.baseURL, request, apiKey);
+  }
+
+  /**
+   * Gets the Lists Endpoint instance of ClickUp API.
+   * @return {object} The ClickUp Lists Endpoint instance
+   */
+  get lists() {
+    return new lists(this.baseURL, request, apiKey);
   }
 
 }
