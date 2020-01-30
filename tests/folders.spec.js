@@ -1,7 +1,7 @@
 const expect = require('chai').expect;
 const clickUpApi = require('../ClickUpApiV2/ClickUpApi');
 
-describe('Folders Api endpoint', function () {
+describe.only('Folders Api endpoint', function () {
   beforeEach(async () => {
     //Create a Space for each test
     this.teamId = 3012784;
@@ -34,4 +34,9 @@ describe('Folders Api endpoint', function () {
     expect(updatedFolder.name).to.eq('My Folder edited');
   });
 
+  it.only('Verifies a folder has been deleted', async () => {
+    const createdFolder = await clickUpApi.folders.createFolder(this.createdSpace.id, 'My Folder');
+    const deletedFolder = await clickUpApi.folders.deleteFolder(createdFolder.id);
+    expect(deletedFolder).to.eql({});
+  });
 });
