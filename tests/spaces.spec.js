@@ -1,7 +1,7 @@
 const expect = require('chai').expect;
 const clickUpApi = require('../ClickUpApiV2/ClickUpApi');
 
-describe.only('Spaces Api endpoint', function () {
+describe('Spaces Api endpoint', function () {
   beforeEach(async () => {
     //Create a Space for each test
     this.teamId = 3012784;
