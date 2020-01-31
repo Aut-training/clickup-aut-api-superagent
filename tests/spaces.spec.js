@@ -21,7 +21,7 @@ describe('Spaces Api endpoint', function () {
   it('Verifies the space "My Space" is in WorkSpace', async () => {
     const space = await clickUpApi.spaces.getSpace(this.createdSpace.id);
     expect(space.id).to.eq(this.createdSpace.id);
-    expect(space.name).to.eq('My Space' + 123);
+    expect(space.name).to.eq('My Space');
   });
 
   it('Verifies a space has been updated', async () => {

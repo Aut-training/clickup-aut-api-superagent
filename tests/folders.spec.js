@@ -17,7 +17,7 @@ describe('Folders Api endpoint', function () {
     const createdFolder = await clickUpApi.folders.createFolder(this.createdSpace.id, 'My Folder');
     const searchedFolder = await clickUpApi.folders.getFolder(createdFolder.id);
     expect(createdFolder.id).to.eq(searchedFolder.id);
-    expect(createdFolder.name).to.eq(searchedFolder.name + 123);
+    expect(createdFolder.name).to.eq(searchedFolder.name);
   });
 
   it('Verifies there are 2 folders in Space "My Space" after creating them', async () => {
