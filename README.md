@@ -1,4 +1,4 @@
-# ClickUp Automation API
+# ClickUp Automation API Testing
 Clickup API testing using Mocha, Chai and Superagent
 
 ## Getting Started
