@@ -18,7 +18,7 @@ describe('Lists Api endpoint', function () {
     const createdList = await clickUpApi.lists.createList(this.createdFolder.id, 'My List', 'My List description');
     const searchedList = await clickUpApi.lists.getList(createdList.id);
     expect(searchedList.name).to.eq('My List');
-    expect(searchedList.content).to.eq('My List description123');
+    expect(searchedList.content).to.eq('My List description');
   });
 
   it('Verifies a created list without folders in ClickUp', async () => {
