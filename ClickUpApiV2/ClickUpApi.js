@@ -4,6 +4,7 @@ const lists = require('./Endpoints/Lists');
 const tasks = require('./Endpoints/Tasks');
 const taskTemplates = require('./Endpoints/TaskTemplates');
 const views = require('./Endpoints/Views');
+const checklists = require('./Endpoints/Checklists');
 const request = require('../Requesters/SuperAgent');
 const apiKey = 'pk_3023811_ND9FAB6MPKZRPJXSC81IUEVCQNN3O1Q3';
 
@@ -80,6 +81,14 @@ class ClickUpApi {
    */
   get views() {
     return new views(this.baseURL, request, apiKey);
+  }
+
+  /**
+   * Gets the Checklists Endpoint instance of ClickUp API.
+   * @return {object} The ClickUp Checklists Endpoint instance
+   */
+  get checklists() {
+    return new checklists(this.baseURL, request, apiKey);
   }
 
 }
