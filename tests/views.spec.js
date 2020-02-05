@@ -75,7 +75,7 @@ describe('Views Api endpoint', function () {
     expect(secondDeletedView).to.eql({});
   });
 
-  it.only('Verifies there are 2 tasks in List "My List" using views', async () => {
+  it('Verifies there are 2 tasks in List "My List" using views', async () => {
     const createdView = await clickUpApi.views.createListView(this.createdList.id, 'My List View');
     await clickUpApi.tasks.createTask(this.createdList.id, 'My Task 1');
     await clickUpApi.tasks.createTask(this.createdList.id, 'My Task 2');
