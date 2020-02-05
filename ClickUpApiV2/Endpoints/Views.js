@@ -235,13 +235,14 @@ class Views {
    * @async
    * @function getTaskFromView
    * @param {string|number} viewId - The View ID.
+   * @param {number} [data=0] page - The Page to fetch if there is a significant number of tasks.
    * @return {Promise<Array.<Object>>} An Array of Tasks from a View.
    * @example
    * // returns [{id: 123, name: "Task 1", ...}, {id: 456, name: "Task 2", ...}]
    * views.getTaskFromView("viewId");
    */
-  async getTaskFromView(viewId) {
-    const tasks = await this.request.get(`${this.baseUrl}${pathUrl}/${viewId}`, { archived: false }, { 'Authorization': this.apiKey });
+  async getTaskFromView(viewId, page=0) {
+    const tasks = await this.request.get(`${this.baseUrl}${pathUrl}/${viewId}/task`, { page: page }, { 'Authorization': this.apiKey });
     return tasks.tasks;
   }
 

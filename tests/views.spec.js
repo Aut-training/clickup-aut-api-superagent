@@ -1,7 +1,7 @@
 const expect = require('chai').expect;
 const clickUpApi = require('../ClickUpApiV2/ClickUpApi');
 
-describe.only('Views Api endpoint', function () {
+describe('Views Api endpoint', function () {
   beforeEach(async () => {
     //Create a Space for each test
     this.teamId = 3012784;
@@ -29,15 +29,15 @@ describe.only('Views Api endpoint', function () {
     const secondDeletedView = await clickUpApi.views.deleteView(secondCreatedView.id);
     expect(secondDeletedView).to.eql({});
   });
-/*
-  it.only('Verifies a created, updated and deleted Space Views in ClickUp', async () => {
+
+  it('Verifies a created, updated and deleted Space Views in ClickUp', async () => {
     const createdView = await clickUpApi.views.createSpaceView(this.createdSpace.id, 'My Space View');
     const secondCreatedView = await clickUpApi.views.createSpaceView(this.createdSpace.id, 'My Space View 2');
     const searchedView = await clickUpApi.views.getView(createdView.id);
     expect(searchedView.name).to.eq('My Space View');
     const updatedView = await clickUpApi.views.updateView(searchedView.id, 'My Space View updated');
     expect(updatedView.name).to.eq('My Space View updated');
-    const views = await clickUpApi.views.getSpaceViews(this.teamId);
+    const views = await clickUpApi.views.getSpaceViews(this.createdSpace.id);
     expect(views).to.have.lengthOf(2);
     const deletedView = await clickUpApi.views.deleteView(updatedView.id);
     expect(deletedView).to.eql({});
@@ -52,7 +52,7 @@ describe.only('Views Api endpoint', function () {
     expect(searchedView.name).to.eq('My Folder View');
     const updatedView = await clickUpApi.views.updateView(searchedView.id, 'My Folder View updated');
     expect(updatedView.name).to.eq('My Folder View updated');
-    const views = await clickUpApi.views.getFolderViews(this.teamId);
+    const views = await clickUpApi.views.getFolderViews(this.createdFolder.id);
     expect(views).to.have.lengthOf(2);
     const deletedView = await clickUpApi.views.deleteView(updatedView.id);
     expect(deletedView).to.eql({});
@@ -67,7 +67,7 @@ describe.only('Views Api endpoint', function () {
     expect(searchedView.name).to.eq('My List View');
     const updatedView = await clickUpApi.views.updateView(searchedView.id, 'My List View updated');
     expect(updatedView.name).to.eq('My List View updated');
-    const views = await clickUpApi.views.getListViews(this.teamId);
+    const views = await clickUpApi.views.getListViews(this.createdList.id);
     expect(views).to.have.lengthOf(2);
     const deletedView = await clickUpApi.views.deleteView(updatedView.id);
     expect(deletedView).to.eql({});
@@ -75,26 +75,12 @@ describe.only('Views Api endpoint', function () {
     expect(secondDeletedView).to.eql({});
   });
 
-  /*it('Verifies there are 2 tasks in List "My List" and in team "3012784" after creating them', async () => {
+  it.only('Verifies there are 2 tasks in List "My List" using views', async () => {
+    const createdView = await clickUpApi.views.createListView(this.createdList.id, 'My List View');
     await clickUpApi.tasks.createTask(this.createdList.id, 'My Task 1');
     await clickUpApi.tasks.createTask(this.createdList.id, 'My Task 2');
-    const tasks = await clickUpApi.tasks.getTasks(this.createdList.id);
-    const tasksFilteredByTeam = await clickUpApi.tasks.getFilteredTeamTasks(this.teamId);
+    const tasks = await clickUpApi.views.getTaskFromView(createdView.id);    
     expect(tasks).to.have.lengthOf(2);
-    expect(tasksFilteredByTeam).to.have.lengthOf(2);
+    await clickUpApi.views.deleteView(createdView.id);
   });
-
-  it('Verifies a task has been updated', async () => {
-    const createdTask = await clickUpApi.tasks.createTask(this.createdList.id, 'My Task', 'My Task description');
-    const updatedTask = await clickUpApi.tasks.updateTask(createdTask.id, 'My Task edited', 'My task description edited');
-    expect(updatedTask.id).to.eq(createdTask.id);
-    expect(updatedTask.name).to.eq('My Task edited');
-    expect(updatedTask.description).to.eq('My task description edited');
-  });
-
-  it('Verifies a task has been deleted', async () => {
-    const createdTask = await clickUpApi.tasks.createTask(this.createdList.id, 'My Task', 'My Task description');
-    const deletedTask = await clickUpApi.tasks.deleteTask(createdTask.id);
-    expect(deletedTask).to.eql({});
-  });*/
 });
