@@ -54,7 +54,7 @@ Add this configuration to launch.json in .vscode folder in the project.
     "configurations": [
         {
             "request": "launch",
-            "name": "Debug Mocha Test",
+            "name": "Debug All Mocha Tests",
             "type": "node",
             // Notice, we bypass the launcher and start the test runner directly
             "program": "${workspaceFolder}/node_modules/mocha/bin/_mocha",
@@ -68,7 +68,83 @@ Add this configuration to launch.json in .vscode folder in the project.
             "runtimeExecutable": null,
             "env": {},
             "console": "integratedTerminal"
-        }
+        },
+        {
+            "request": "launch",
+            "name": "Debug Folders Endpoint Mocha Tests",
+            "type": "node",
+            // Notice, we bypass the launcher and start the test runner directly
+            "program": "${workspaceFolder}/node_modules/mocha/bin/_mocha",
+            "stopOnEntry": true,
+            // run the tests in the test folder
+            "args": [
+                "tests/*.spec.js",
+                "--no-timeouts",
+                "--grep",
+                "\"Folders Api endpoint\""
+            ],
+            "cwd": "${workspaceFolder}",
+            "runtimeExecutable": null,
+            "env": {},
+            "console": "integratedTerminal"
+        },
+        {
+            "request": "launch",
+            "name": "Debug Lists Endpoint Mocha Tests",
+            "type": "node",
+            // Notice, we bypass the launcher and start the test runner directly
+            "program": "${workspaceFolder}/node_modules/mocha/bin/_mocha",
+            "stopOnEntry": true,
+            // run the tests in the test folder
+            "args": [
+                "tests/*.spec.js",
+                "--no-timeouts",
+                "--grep",
+                "\"Lists Api endpoint\""
+            ],
+            "cwd": "${workspaceFolder}",
+            "runtimeExecutable": null,
+            "env": {},
+            "console": "integratedTerminal"
+        },
+        {
+            "request": "launch",
+            "name": "Debug Spaces Endpoint Mocha Tests",
+            "type": "node",
+            // Notice, we bypass the launcher and start the test runner directly
+            "program": "${workspaceFolder}/node_modules/mocha/bin/_mocha",
+            "stopOnEntry": true,
+            // run the tests in the test folder
+            "args": [
+                "tests/*.spec.js",
+                "--no-timeouts",
+                "--grep",
+                "\"Spaces Api endpoint\""
+            ],
+            "cwd": "${workspaceFolder}",
+            "runtimeExecutable": null,
+            "env": {},
+            "console": "integratedTerminal"
+        },
+        {
+            "request": "launch",
+            "name": "Debug Tasks Endpoint Mocha Tests",
+            "type": "node",
+            // Notice, we bypass the launcher and start the test runner directly
+            "program": "${workspaceFolder}/node_modules/mocha/bin/_mocha",
+            "stopOnEntry": true,
+            // run the tests in the test folder
+            "args": [
+                "tests/*.spec.js",
+                "--no-timeouts",
+                "--fgrep",
+                "\"Tasks Api endpoint\""
+            ],
+            "cwd": "${workspaceFolder}",
+            "runtimeExecutable": null,
+            "env": {},
+            "console": "integratedTerminal"
+        },
     ]
 }
 ```

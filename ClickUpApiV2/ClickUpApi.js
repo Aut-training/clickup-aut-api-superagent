@@ -1,6 +1,7 @@
 const spaces = require('./Endpoints/Spaces');
 const folders = require('./Endpoints/Folders');
 const lists = require('./Endpoints/Lists');
+const tasks = require('./Endpoints/Tasks');
 const request = require('../Requesters/SuperAgent');
 const apiKey = 'pk_3023811_ND9FAB6MPKZRPJXSC81IUEVCQNN3O1Q3';
 
@@ -53,6 +54,14 @@ class ClickUpApi {
    */
   get lists() {
     return new lists(this.baseURL, request, apiKey);
+  }
+
+  /**
+   * Gets the Tasks Endpoint instance of ClickUp API.
+   * @return {object} The ClickUp Tasks Endpoint instance
+   */
+  get tasks() {
+    return new tasks(this.baseURL, request, apiKey);
   }
 
 }

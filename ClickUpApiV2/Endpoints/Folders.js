@@ -23,15 +23,15 @@ class Folders {
    * @async
    * @function createFolder
    * @param {string|number} spaceId - The Space ID to create the folder.
-   * @param {string} folderName - The name to set to the Folder.
+   * @param {string} name - The name to set to the Folder.
    * @return {Promise<Object>} The Folder object created by ClickUp.
    * @example
    * // returns {id: 123, name: "My Folder", ...}
    * folders.createFolder("My Folder");
    */
-  async createFolder(spaceId, folderName) {
-    const folders = await this.request.post(`${this.baseUrl}/space/${spaceId}${pathUrl}`, { name: folderName }, { 'Authorization': this.apiKey });
-    return folders;
+  async createFolder(spaceId, name) {
+    const folder = await this.request.post(`${this.baseUrl}/space/${spaceId}${pathUrl}`, { name: name }, { 'Authorization': this.apiKey });
+    return folder;
   }
 
   /**
