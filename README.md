@@ -201,6 +201,25 @@ Add this configuration to launch.json in .vscode folder in the project.
             "runtimeExecutable": null,
             "env": {},
             "console": "integratedTerminal"
+        },
+        {
+            "request": "launch",
+            "name": "Debug Comments Endpoint Mocha Tests",
+            "type": "node",
+            // Notice, we bypass the launcher and start the test runner directly
+            "program": "${workspaceFolder}/node_modules/mocha/bin/_mocha",
+            "stopOnEntry": true,
+            // run the tests in the test folder
+            "args": [
+                "tests/*.spec.js",
+                "--no-timeouts",
+                "--fgrep",
+                "\"Comments Api endpoint\""
+            ],
+            "cwd": "${workspaceFolder}",
+            "runtimeExecutable": null,
+            "env": {},
+            "console": "integratedTerminal"
         }
     ]
 }

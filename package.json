@@ -12,7 +12,8 @@
     "test-tasks": "./node_modules/.bin/mocha tests/*.spec.js --debug-brk --timeout 10000 --fgrep \"Tasks Api endpoint\"",
     "test-taskTemplates": "./node_modules/.bin/mocha tests/*.spec.js --debug-brk --timeout 10000 --fgrep \"Task Templates Api endpoint\"",
     "test-views": "./node_modules/.bin/mocha tests/*.spec.js --debug-brk --timeout 10000 --fgrep \"Views Api endpoint\"",
-    "test-checklists": "./node_modules/.bin/mocha tests/*.spec.js --debug-brk --timeout 10000 --fgrep \"Chacklists Api endpoint\""
+    "test-checklists": "./node_modules/.bin/mocha tests/*.spec.js --debug-brk --timeout 10000 --fgrep \"Checklists Api endpoint\"",
+    "test-comments": "./node_modules/.bin/mocha tests/*.spec.js --debug-brk --timeout 10000 --fgrep \"Comments Api endpoint\""
   },
   "keywords": [],
   "author": "",

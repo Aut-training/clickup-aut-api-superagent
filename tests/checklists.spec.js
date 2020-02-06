@@ -1,7 +1,7 @@
 const expect = require('chai').expect;
 const clickUpApi = require('../ClickUpApiV2/ClickUpApi');
 
-describe('Chacklists Api endpoint', function () {
+describe('Checklists Api endpoint', function () {
   beforeEach(async () => {
     //Create a Space, Folder and a Task for each test
     this.teamId = 3012784;
