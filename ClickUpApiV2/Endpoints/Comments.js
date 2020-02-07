@@ -59,6 +59,26 @@ class Comments {
   }
 
   /**
+   * Creates a new Comment in a view.
+   *
+   * @async
+   * @function createViewComment
+   * @param {string|number} viewId - The View ID to create the Comment.
+   * @param {string} comment - The Comment to set in the View.
+   * @return {Promise<Object>} The Comment object created by ClickUp.
+   * @example
+   * // returns {"checklist": { "id": 15826580, "hist_id": 1764883347554751118, "date": 1580991384622 } }
+   * Comments.createViewComment("ViewId", "New Comment");
+   */
+  async createViewComment(viewId, comment) {
+    const viewComment = await this.request.post(`${this.baseUrl}/view/${viewId}${pathUrl}`, {
+      comment_text: comment,
+      notify_all: true
+    }, { 'Authorization': this.apiKey });
+    return viewComment;
+  }
+
+  /**
    * Gets an array of Comments in a Task.
    *
    * @async
@@ -92,6 +112,24 @@ class Comments {
       archived: false
     }, { 'Authorization': this.apiKey });
     return listComments.comments;
+  }
+
+  /**
+   * Gets an array of Comments from a View.
+   *
+   * @async
+   * @function getViewComments
+   * @param {number} ViewId - The View ID.
+   * @return {Promise<Array.<Object>>} An Array of Comments in a View.
+   * @example
+   * // returns [{id: 123, comment: [], comment_text...}, {id: 456, comment: [], comment_text...}]
+   * Comments.getViewComments("viewId");
+   */
+  async getViewComments(viewId) {
+    const viewComments = await this.request.get(`${this.baseUrl}/view/${viewId}${pathUrl}`, {
+      archived: false
+    }, { 'Authorization': this.apiKey });
+    return viewComments.comments;
   }
 
   /**
