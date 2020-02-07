@@ -6,6 +6,7 @@ const taskTemplates = require('./Endpoints/TaskTemplates');
 const views = require('./Endpoints/Views');
 const checklists = require('./Endpoints/Checklists');
 const comments = require('./Endpoints/Comments');
+const tags = require('./Endpoints/Tags');
 const request = require('../Requesters/SuperAgent');
 const apiKey = 'pk_3023811_ND9FAB6MPKZRPJXSC81IUEVCQNN3O1Q3';
 
@@ -98,6 +99,14 @@ class ClickUpApi {
    */
   get comments() {
     return new comments(this.baseURL, request, apiKey);
+  }
+
+  /**
+   * Gets the Tags Endpoint instance of ClickUp API.
+   * @return {Object} The ClickUp Tags Endpoint instance
+   */
+  get tags() {
+    return new tags(this.baseURL, request, apiKey);
   }
 
 }
