@@ -139,7 +139,7 @@ class Comments {
    * @function UpdateComment
    * @param {number} commentId - The ID of the comment to be updated.
    * @param {string} comment - The new comment value.
-   * @return {Promise<Object>} It should return an empty object.
+   * @return {Promise<Object>} It should return an empty object when the update was successfully performed by ClickUp.
    * @example
    * // returns {}
    * Comments.updateComment("CommentId", "New Comment");
@@ -159,7 +159,7 @@ class Comments {
    * @async
    * @function deleteComment
    * @param {number} commentId - The Comment ID.
-   * @return {Promise<Array.<Object>>} It should return an empty object.
+   * @return {Promise<Array.<Object>>} It should return an empty object when the deletion was successfully performed by ClickUp.
    * @example
    * // returns {}
    * Comments.deleteComment("CommentId");
