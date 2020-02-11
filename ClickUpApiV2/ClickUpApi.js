@@ -8,6 +8,7 @@ const checklists = require('./Endpoints/Checklists');
 const comments = require('./Endpoints/Comments');
 const tags = require('./Endpoints/Tags');
 const teams = require('./Endpoints/Teams');
+const goals = require('./Endpoints/Goals');
 const request = require('../Requesters/SuperAgent');
 const apiKey = 'pk_3023811_ND9FAB6MPKZRPJXSC81IUEVCQNN3O1Q3';
 
@@ -116,6 +117,14 @@ class ClickUpApi {
    */
   get teams() {
     return new teams(this.baseURL, request, apiKey);
+  }
+
+  /**
+   * Gets the Goals Endpoint instance of ClickUp API.
+   * @return {Object} The ClickUp Goals Endpoint instance
+   */
+  get goals() {
+    return new goals(this.baseURL, request, apiKey);
   }
 }
 
