@@ -22,7 +22,7 @@ class Goals {
    * @async
    * @function createGoal
    * @param {number} teamId - The Team ID to create the Goal.
-   * * @param {string} name - The Name to set to the Goal.
+   * @param {string} name - The Name to set to the Goal.
    * @param {string} description - The Description to set to the Goal.
    * @return {Promise<Object>} The Goal object created by ClickUp.
    * @example
@@ -126,7 +126,7 @@ class Goals {
    * @async
    * @function createKeyResult
    * @param {number} goalId - The Goal ID to create the Key Result.
-   * * @param {string} name - The Name to set to the Key Result.
+   * @param {string} name - The Name to set to the Key Result.
    * @return {Promise<Object>} The Key Result object created by ClickUp.
    * @example
    * // returns {"key_result": { "id": "0c724a04", "goal_id": "c5ae6bc7", "name": "Key Result Name",...}}
