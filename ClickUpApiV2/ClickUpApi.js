@@ -8,6 +8,7 @@ const checklists = require('./Endpoints/Checklists');
 const comments = require('./Endpoints/Comments');
 const tags = require('./Endpoints/Tags');
 const teams = require('./Endpoints/Teams');
+const members = require('./Endpoints/Member');
 const request = require('../Requesters/SuperAgent');
 const apiKey = 'pk_3023811_ND9FAB6MPKZRPJXSC81IUEVCQNN3O1Q3';
 
@@ -116,6 +117,10 @@ class ClickUpApi {
    */
   get teams() {
     return new teams(this.baseURL, request, apiKey);
+  }
+
+  get members() {
+    return new members(this.baseURL, request, apiKey);
   }
 }
 
