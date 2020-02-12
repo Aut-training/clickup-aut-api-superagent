@@ -1,13 +1,13 @@
 const expect = require('chai').expect;
+const helper = require('../ClickUpApiV2/Data/helper');
 const clickUpApi = require('../ClickUpApiV2/ClickUpApi');
 
 describe('Comments Api endpoint', function () {
   beforeEach(async () => {
     //Create a Space, Folder and a Task for each test
-    this.teamId = 3012784;
-    this.createdSpace = await clickUpApi.spaces.createSpace(this.teamId, 'My Space');
-    this.createdList = await clickUpApi.lists.createFolderlessList(this.createdSpace.id, 'My List', 'My List without folder');
-    this.createdTask = await clickUpApi.tasks.createTask(this.createdList.id, 'My Task', 'My Task description');
+    this.createdSpace = await clickUpApi.spaces.createSpace(helper.team.id, helper.generateID());
+    this.createdList = await clickUpApi.lists.createFolderlessList(this.createdSpace.id, helper.generateID(), helper.generateID());
+    this.createdTask = await clickUpApi.tasks.createTask(this.createdList.id, helper.generateID(), helper.generateID());
   });
 
   afterEach(async () => {
@@ -16,39 +16,41 @@ describe('Comments Api endpoint', function () {
   });
 
   it('Verifies a created comment in a Task', async () => {
-    await clickUpApi.comments.createTaskComment(this.createdTask.id, 'Task comment content');
+    const taskContent = helper.generateID();
+    await clickUpApi.comments.createTaskComment(this.createdTask.id, taskContent);
     const comments = await clickUpApi.comments.getTaskComments(this.createdTask.id);
-    expect(comments[0].comment_text).to.eq('Task comment content');
+    expect(comments[0].comment_text).to.eq(taskContent);
   });
 
   it('Verifies that there are two comments in a Task', async () => {
-    await clickUpApi.comments.createTaskComment(this.createdTask.id, 'First comment');
-    await clickUpApi.comments.createTaskComment(this.createdTask.id, 'Second comment');
+    await clickUpApi.comments.createTaskComment(this.createdTask.id, helper.generateID());
+    await clickUpApi.comments.createTaskComment(this.createdTask.id, helper.generateID());
     const comments = await clickUpApi.comments.getTaskComments(this.createdTask.id);
     expect(comments).to.have.lengthOf(2);
   });
 
   it('Verifies that a comment has ben updated', async () => {
-    const createdComment = await clickUpApi.comments.createTaskComment(this.createdTask.id, 'Task comment content');
-    const updatedComment = await clickUpApi.comments.updateComment(createdComment.id, 'Edited comment');
+    const createdComment = await clickUpApi.comments.createTaskComment(this.createdTask.id, helper.generateID());
+    const updatedComment = await clickUpApi.comments.updateComment(createdComment.id, helper.generateID());
     expect(updatedComment).to.eql({});
   });
 
   it('Verifies that a comment has ben deleted', async () => {
-    const createdComment = await clickUpApi.comments.createTaskComment(this.createdTask.id, 'Task comment content');
+    const createdComment = await clickUpApi.comments.createTaskComment(this.createdTask.id, helper.generateID());
     const deletedComment = await clickUpApi.comments.deleteComment(createdComment.id);
     expect(deletedComment).to.eql({});
   });
 
   it('Verifies a created comment in a List', async () => {
-    await clickUpApi.comments.createListComment(this.createdList.id, 'List comment content');
+    const taskContent = helper.generateID();
+    await clickUpApi.comments.createListComment(this.createdList.id, taskContent);
     const comments = await clickUpApi.comments.getListComments(this.createdList.id);
-    expect(comments[0].comment_text).to.eq('List comment content');
+    expect(comments[0].comment_text).to.eq(taskContent);
   });
 
   it('Verifies that there are two comments in a List', async () => {
-    await clickUpApi.comments.createListComment(this.createdList.id, 'First comment');
-    await clickUpApi.comments.createListComment(this.createdList.id, 'Second comment');
+    await clickUpApi.comments.createListComment(this.createdList.id, helper.generateID());
+    await clickUpApi.comments.createListComment(this.createdList.id, helper.generateID());
     const comments = await clickUpApi.comments.getListComments(this.createdList.id);
     expect(comments).to.have.lengthOf(2);
   });
