@@ -10,12 +10,12 @@
     "test-lists": "./node_modules/.bin/mocha tests/*.spec.js --debug-brk --timeout 10000 --fgrep \"Lists Api endpoint\"",
     "test-spaces": "./node_modules/.bin/mocha tests/*.spec.js --debug-brk --timeout 10000 --fgrep \"Spaces Api endpoint\"",
     "test-tasks": "./node_modules/.bin/mocha tests/*.spec.js --debug-brk --timeout 10000 --fgrep \"Tasks Api endpoint\"",
-    "test-taskTemplates": "./node_modules/.bin/mocha tests/*.spec.js --debug-brk --timeout 10000 --fgrep \"Task Templates Api endpoint\"",
     "test-views": "./node_modules/.bin/mocha tests/*.spec.js --debug-brk --timeout 10000 --fgrep \"Views Api endpoint\"",
     "test-checklists": "./node_modules/.bin/mocha tests/*.spec.js --debug-brk --timeout 10000 --fgrep \"Checklists Api endpoint\"",
     "test-comments": "./node_modules/.bin/mocha tests/*.spec.js --debug-brk --timeout 10000 --fgrep \"Comments Api endpoint\"",
     "test-tags": "./node_modules/.bin/mocha tests/*.spec.js --debug-brk --timeout 10000 --fgrep \"Tags Api endpoint\"",
     "test-teams": "./node_modules/.bin/mocha tests/*.spec.js --debug-brk --timeout 10000 --fgrep \"Teams Api endpoint\"",
+    "test-goals": "./node_modules/.bin/mocha tests/*.spec.js --debug-brk --timeout 10000 --fgrep \"Goals Api endpoint\"",
     "test-members": "./node_modules/.bin/mocha tests/*.spec.js --debug-brk --timeout 10000 --fgrep \"Members Api endpoint\""
   },
   "keywords": [],
