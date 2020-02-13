@@ -4,9 +4,6 @@ function generateID(){
   }).toLowerCase();
 }
 
-const listName = 'List testing';
-const taskName = 'Task testing';
-
 module.exports = {
   team: {
     'id': '3014652',
@@ -15,6 +12,6 @@ module.exports = {
     'avatar': null   
   },
   generateID: generateID,
-  listName: listName,
-  taskName: taskName
+  listName: 'List testing',
+  taskName: 'Task testing'
 };
