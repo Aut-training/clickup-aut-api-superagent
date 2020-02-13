@@ -30,11 +30,11 @@ class Member {
    */
   async getTaskMembers(taskId) {
     const taskMembers = await this.request.get(`${this.baseUrl}/task/${taskId}${pathUrl}`, null, { 'Authorization': this.apiKey });
-    return taskMembers.taskMembers;
+    return taskMembers.members;
   }
 
   /**
-   * Get an array of List Members in ClickUp.
+   * Get an array of Members in a List in ClickUp.
    *
    * @async
    * @function getListMembers
@@ -42,13 +42,12 @@ class Member {
    * @return {Promise<Array.<Object>>} An Array of Members.
    * @example
    * // returns [{"id": 812,
-      "username": "Banana John", "email": "john_banana@example.com",, ...}, {"username": "Pepe Pepon", "email": "pepe_pepon@example.com", ...}]   
+      "username": "Banana John", "email": "john_banana@example.com",, ...}, {"username": "Pepe Perez", "email": "pepe_perez@example.com", ...}]   
    */
   async getListMembers(listId) {
     const listMembers = await this.request.get(`${this.baseUrl}/list/${listId}${pathUrl}`, { archived: false }, { 'Authorization': this.apiKey });
-    return listMembers.listMembers;
+    return listMembers.members;
   }
 }
-//https://api.clickup.com/api/v2/list/list_id/member
 
 module.exports = Member;
