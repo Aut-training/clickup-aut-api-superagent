@@ -6,7 +6,6 @@
   "scripts": {
     "eslint": "eslint --ignore-path .gitignore .",
     "test": "./node_modules/.bin/mocha tests/*.spec.js --debug-brk --timeout 10000",
-    "test-jenkins": "JUNIT_REPORT_PATH=/report.xml ./node_modules/.bin/mocha tests/*.spec.js --debug-brk --timeout 10000 --fgrep \"Members Api endpoint\" --colors --reporter mocha-jenkins-reporter",
     "test-folders": "./node_modules/.bin/mocha tests/*.spec.js --debug-brk --timeout 10000 --fgrep \"Folders Api endpoint\"",
     "test-lists": "./node_modules/.bin/mocha tests/*.spec.js --debug-brk --timeout 10000 --fgrep \"Lists Api endpoint\"",
     "test-spaces": "./node_modules/.bin/mocha tests/*.spec.js --debug-brk --timeout 10000 --fgrep \"Spaces Api endpoint\"",
@@ -23,11 +22,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.19.1",
     "jsdoc": "^3.6.3",
-    "mocha-jenkins-reporter": "^0.4.2",
-    "request": "^2.88.0",
-    "request-promise": "^4.2.5",
     "superagent": "^5.2.1"
   },
   "devDependencies": {
@@ -39,6 +34,6 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
     "mocha": "^7.0.0",
-    "moxios": "^0.4.0"
+    "mochawesome": "^4.1.0"
   }
 }
