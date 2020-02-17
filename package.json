@@ -16,8 +16,7 @@
     "test-tags": "./node_modules/.bin/mocha tests/*.spec.js --debug-brk --timeout 10000 --fgrep \"Tags Api endpoint\"",
     "test-teams": "./node_modules/.bin/mocha tests/*.spec.js --debug-brk --timeout 10000 --fgrep \"Teams Api endpoint\"",
     "test-goals": "./node_modules/.bin/mocha tests/*.spec.js --debug-brk --timeout 10000 --fgrep \"Goals Api endpoint\"",
-    "test-members": "./node_modules/.bin/mocha tests/*.spec.js --debug-brk --timeout 10000 --fgrep \"Members Api endpoint\"",
-    "test-report": "./node_modules/.bin/mocha tests/*.spec.js --debug-brk --timeout 10000 --reporter mochawesome --reporter-options reportDir=${folderName},reportFilename=${fileName}"
+    "test-members": "./node_modules/.bin/mocha tests/*.spec.js --debug-brk --timeout 10000 --fgrep \"Members Api endpoint\""
   },
   "keywords": [],
   "author": "",
