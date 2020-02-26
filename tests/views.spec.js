@@ -3,19 +3,8 @@ const helper = require('../ClickUpApiV2/Data/helper');
 const clickUpApi = require('../ClickUpApiV2/ClickUpApi');
 
 describe('Views Api endpoint', function () {
-  beforeEach(async () => {
-    //Create a Space for each test
-    this.createdSpace = await clickUpApi.spaces.createSpace(helper.team.id, helper.generateID());
-    this.createdFolder = await clickUpApi.folders.createFolder(this.createdSpace.id, helper.generateID());
-    this.createdList = await clickUpApi.lists.createList(this.createdFolder.id, helper.generateID());
-  });
-
-  afterEach(async () => {
-    //Delete the created Space for cleanup
-    await clickUpApi.spaces.deleteSpace(this.createdSpace.id);
-  });
-
-  it('Verifies a created, updated and deleted Team Views in ClickUp', async () => {
+  
+  it('Verifies a created, updated and deleted Team Views in ClickUp', async function() {
     const createdView = await clickUpApi.views.createTeamView(helper.team.id, helper.generateID());
     const secondCreatedView = await clickUpApi.views.createTeamView(helper.team.id, helper.generateID());
     const searchedView = await clickUpApi.views.getView(createdView.id);
@@ -31,7 +20,7 @@ describe('Views Api endpoint', function () {
     expect(secondDeletedView).to.eql({});
   });
 
-  it('Verifies a created, updated and deleted Space Views in ClickUp', async () => {
+  it('Verifies a created, updated and deleted Space Views in ClickUp', async function() {
     const createdView = await clickUpApi.views.createSpaceView(this.createdSpace.id, helper.generateID());
     const secondCreatedView = await clickUpApi.views.createSpaceView(this.createdSpace.id, helper.generateID());
     const searchedView = await clickUpApi.views.getView(createdView.id);
@@ -47,7 +36,7 @@ describe('Views Api endpoint', function () {
     expect(secondDeletedView).to.eql({});
   });
 
-  it('Verifies a created, updated and deleted Folder Views in ClickUp', async () => {
+  it('Verifies a created, updated and deleted Folder Views in ClickUp', async function() {
     const createdView = await clickUpApi.views.createFolderView(this.createdFolder.id, helper.generateID());
     const secondCreatedView = await clickUpApi.views.createFolderView(this.createdFolder.id, helper.generateID());
     const searchedView = await clickUpApi.views.getView(createdView.id);
@@ -63,7 +52,7 @@ describe('Views Api endpoint', function () {
     expect(secondDeletedView).to.eql({});
   });
 
-  it('Verifies a created, updated and deleted List Views in ClickUp', async () => {
+  it('Verifies a created, updated and deleted List Views in ClickUp', async function() {
     const createdView = await clickUpApi.views.createListView(this.createdList.id, helper.generateID());
     const secondCreatedView = await clickUpApi.views.createListView(this.createdList.id, helper.generateID());
     const searchedView = await clickUpApi.views.getView(createdView.id);
@@ -79,12 +68,13 @@ describe('Views Api endpoint', function () {
     expect(secondDeletedView).to.eql({});
   });
 
-  it('Verifies there are 2 tasks in List "My List" using views', async () => {
+  it('Verifies there are 3 tasks in List using views', async function() {
     const createdView = await clickUpApi.views.createListView(this.createdList.id, helper.generateID());
     await clickUpApi.tasks.createTask(this.createdList.id, helper.generateID());
     await clickUpApi.tasks.createTask(this.createdList.id, helper.generateID());
     const tasks = await clickUpApi.views.getTaskFromView(createdView.id);
-    expect(tasks).to.have.lengthOf(2);
+    expect(tasks).to.have.lengthOf(3);
     await clickUpApi.views.deleteView(createdView.id);
   });
+
 });

@@ -3,18 +3,8 @@ const helper = require('../ClickUpApiV2/Data/helper');
 const clickUpApi = require('../ClickUpApiV2/ClickUpApi');
 
 describe('Lists Api endpoint', function () {
-  beforeEach(async () => {
-    //Create a Space and a Folder for each test
-    this.createdSpace = await clickUpApi.spaces.createSpace(helper.team.id, helper.generateID());
-    this.createdFolder = await clickUpApi.folders.createFolder(this.createdSpace.id, helper.generateID());
-  });
 
-  afterEach(async () => {
-    //Delete the created Space for cleanup
-    await clickUpApi.spaces.deleteSpace(this.createdSpace.id);
-  });
-
-  it('Verifies a created list in ClickUp', async () => {
+  it('Verifies a created list in ClickUp', async function() {
     const list = {name: helper.generateID(), content: helper.generateID()};
     const createdList = await clickUpApi.lists.createList(this.createdFolder.id, list.name, list.content);
     const searchedList = await clickUpApi.lists.getList(createdList.id);
@@ -22,7 +12,7 @@ describe('Lists Api endpoint', function () {
     expect(searchedList.content).to.eq(list.content);
   });
 
-  it('Verifies a created list without folders in ClickUp', async () => {
+  it('Verifies a created list without folders in ClickUp', async function() {
     const list = {name: helper.generateID(), content: helper.generateID()};
     const createdFolderlessList = await clickUpApi.lists.createFolderlessList(this.createdSpace.id, list.name, list.content);
     const searchedList = await clickUpApi.lists.getList(createdFolderlessList.id);
@@ -30,7 +20,7 @@ describe('Lists Api endpoint', function () {
     expect(searchedList.content).to.eq(list.content);
   });
 
-  it('Verifies an updated list in ClickUp', async () => {
+  it('Verifies an updated list in ClickUp', async function() {
     const list = {name: helper.generateID(), content: helper.generateID()};
     const createdList = await clickUpApi.lists.createList(this.createdFolder.id, helper.generateID(), helper.generateID());
     const updatedList = await clickUpApi.lists.updateList(createdList.id, list.name, list.content);
@@ -39,23 +29,38 @@ describe('Lists Api endpoint', function () {
     expect(updatedList.content).to.eq(list.content);
   });
 
-  it('Verifies a list has been deleted', async () => {
+  it('Verifies a list has been deleted', async function() {
     const createdList = await clickUpApi.lists.createList(this.createdFolder.id, helper.generateID(), helper.generateID());
     const deletedList = await clickUpApi.lists.deleteList(createdList.id);
     expect(deletedList).to.eql({});
   });
 
-  it('Verifies there are 2 lists in Folder "My Folder" after creating them', async () => {
-    await clickUpApi.lists.createList(this.createdFolder.id, helper.generateID(), helper.generateID());
-    await clickUpApi.lists.createList(this.createdFolder.id, helper.generateID(), helper.generateID());
-    const lists = await clickUpApi.lists.getLists(this.createdFolder.id);
-    expect(lists).to.have.lengthOf(2);
+  it('Verifies there are 2 lists in Folder "My Folder" after creating them', async function() {
+    const list1 = await clickUpApi.lists.createList(this.createdFolder.id, helper.generateID(), helper.generateID());
+    const list2 = await clickUpApi.lists.createList(this.createdFolder.id, helper.generateID(), helper.generateID());
+    const lists = await clickUpApi.lists.getLists(this.createdFolder.id);    
+    expect(lists.find(list => list.id === list1.id)).to.include({
+      id: list1.id,
+      name: list1.name,
+    });
+    expect(lists.find(list => list.id === list2.id)).to.include({
+      id: list2.id,
+      name: list2.name,
+    });
   });
 
-  it('Verifies there are 2 lists without folders after creating them', async () => {
-    await clickUpApi.lists.createFolderlessList(this.createdSpace.id, helper.generateID(), helper.generateID());
-    await clickUpApi.lists.createFolderlessList(this.createdSpace.id, helper.generateID(), helper.generateID());
+  it('Verifies there are 2 lists without folders after creating them', async function() {
+    const list1 = await clickUpApi.lists.createFolderlessList(this.createdSpace.id, helper.generateID(), helper.generateID());
+    const list2 = await clickUpApi.lists.createFolderlessList(this.createdSpace.id, helper.generateID(), helper.generateID());
     const folderlessLists = await clickUpApi.lists.getFolderlessLists(this.createdSpace.id);
-    expect(folderlessLists).to.have.lengthOf(2);
+    expect(folderlessLists.find(list => list.id === list1.id)).to.include({
+      id: list1.id,
+      name: list1.name,
+    });
+    expect(folderlessLists.find(list => list.id === list2.id)).to.include({
+      id: list2.id,
+      name: list2.name,
+    });
   });
+
 });
