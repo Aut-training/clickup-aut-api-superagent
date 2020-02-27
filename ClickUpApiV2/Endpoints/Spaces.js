@@ -1,3 +1,9 @@
+/**
+ * Spaces module for ClickUp API endpoint methods.
+ * @module Spaces
+ */
+
+/** @constant {string} - Path URL for the endpoint */
 const pathUrl = '/space';
 
 /**
@@ -21,7 +27,7 @@ class Spaces {
    * Creates a new Space in ClickUp with its default features.
    *
    * @async
-   * @function createSpace
+   * @method
    * @param {string|number} teamId - The Team ID.
    * @param {string} spaceName - The name to set to the Space.
    * @return {Promise<Object>} The Space object created by ClickUp.
@@ -73,7 +79,7 @@ class Spaces {
    * Updates a Space in ClickUp.
    *
    * @async
-   * @function updateSpace
+   * @method
    * @param {string|number} spaceId - The Space ID.
    * @param {string} name - The new name to set to the Space.
    * @return {Promise<Object>} The Space object updated by ClickUp.
@@ -90,7 +96,7 @@ class Spaces {
    * Deletes a Space in ClickUp.
    *
    * @async
-   * @function deleteSpace
+   * @method
    * @param {string|number} spaceId - The Space ID.
    * @return {Promise<Object>} An empty object if the deletion was successful by ClickUp.
    * @example
@@ -106,7 +112,7 @@ class Spaces {
    * Gets an array of Spaces in a Team in ClickUp.
    *
    * @async
-   * @function getSpaces
+   * @method
    * @param {string|number} teamId - The Team ID.
    * @return {Promise<Array.<Object>>} An Array of Spaces in a Team.
    * @example
@@ -122,7 +128,7 @@ class Spaces {
    * Gets an specific Space by its ID in ClickUp.
    *
    * @async
-   * @function getSpace
+   * @method
    * @param {string|number} spaceId - The Space ID.
    * @return {Promise<Object>} The Space object searched by ClickUp.
    * @example
@@ -133,6 +139,7 @@ class Spaces {
     const space = await this.request.get(`${this.baseUrl}${pathUrl}/${spaceId}`, { archived: false }, { 'Authorization': this.apiKey });
     return space;
   }
+
 }
 
 module.exports = Spaces;

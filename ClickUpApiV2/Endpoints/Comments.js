@@ -1,7 +1,14 @@
+/**
+ * Comments module for ClickUp API endpoint methods.
+ * @module Comments
+ */
+
+/** @constant {string} - Path URL for the endpoint */
 const pathUrl = '/Comment';
 
 /**
- * Class for using Comment ClickUp Endpoint.
+ * Class implementation for Comments ClickUp Endpoint methods.
+ * @class
  */
 class Comments {
   /**
@@ -20,13 +27,13 @@ class Comments {
    * Creates a new Comment in a task.
    *
    * @async
-   * @function createTaskComment
+   * @method
    * @param {string|number} taskId - The Task ID to create the Comment.
    * @param {string} comment - The Comment to set in the Task.
    * @return {Promise<Object>} The Comment object created by ClickUp.
    * @example
    * // returns {"checklist": { "id": 15826580, "hist_id": 1764883347554751118: "date": 1580991384622 }}
-   * Comments.createTaskComment("TaskId", "New Comment");
+   * comments.createTaskComment("TaskId", "New Comment");
    */
   async createTaskComment(taskId, comment) {
     const taskComment = await this.request.post(`${this.baseUrl}/task/${taskId}${pathUrl}`, {
@@ -41,13 +48,13 @@ class Comments {
    * Creates a new Comment in a list.
    *
    * @async
-   * @function createListComment
+   * @method
    * @param {string|number} listId - The List ID to create the Comment.
    * @param {string} comment - The Comment to set in the List.
    * @return {Promise<Object>} The Comment object created by ClickUp.
    * @example
    * // returns {"checklist": { "id": 15826580, "hist_id": 1764883347554751118, "date": 1580991384622 } }
-   * Comments.createListComment("ListId", "New Comment");
+   * comments.createListComment("ListId", "New Comment");
    */
   async createListComment(listId, comment) {
     const listComment = await this.request.post(`${this.baseUrl}/list/${listId}${pathUrl}`, {
@@ -62,13 +69,13 @@ class Comments {
    * Creates a new Comment in a view.
    *
    * @async
-   * @function createViewComment
+   * @method
    * @param {string|number} viewId - The View ID to create the Comment.
    * @param {string} comment - The Comment to set in the View.
    * @return {Promise<Object>} The Comment object created by ClickUp.
    * @example
    * // returns {"checklist": { "id": 15826580, "hist_id": 1764883347554751118, "date": 1580991384622 } }
-   * Comments.createViewComment("ViewId", "New Comment");
+   * comments.createViewComment("ViewId", "New Comment");
    */
   async createViewComment(viewId, comment) {
     const viewComment = await this.request.post(`${this.baseUrl}/view/${viewId}${pathUrl}`, {
@@ -82,12 +89,12 @@ class Comments {
    * Gets an array of Comments in a Task.
    *
    * @async
-   * @function getTaskComments
+   * @method
    * @param {string|number} taskId - The Task ID.
    * @return {Promise<Array.<Object>>} An Array of Comments in a Task.
    * @example
    * // returns [{id: 123, comment: [], comment_text...}, {id: 456, comment: [], comment_text...}]
-   * Comments.getTaskComments("taskId");
+   * comments.getTaskComments("taskId");
    */
   async getTaskComments(taskId) {
     const taskComments = await this.request.get(`${this.baseUrl}/task/${taskId}${pathUrl}`, {
@@ -100,12 +107,12 @@ class Comments {
    * Gets an array of Comments in a List.
    *
    * @async
-   * @function getListComments
+   * @method
    * @param {number} listId - The List ID.
    * @return {Promise<Array.<Object>>} An Array of Comments in a List.
    * @example
    * // returns [{id: 123, comment: [], comment_text...}, {id: 456, comment: [], comment_text...}]
-   * Comments.getListComments("listId");
+   * comments.getListComments("listId");
    */
   async getListComments(listId) {
     const listComments = await this.request.get(`${this.baseUrl}/list/${listId}${pathUrl}`, {
@@ -118,12 +125,12 @@ class Comments {
    * Gets an array of Comments from a View.
    *
    * @async
-   * @function getViewComments
+   * @method
    * @param {number} ViewId - The View ID.
    * @return {Promise<Array.<Object>>} An Array of Comments in a View.
    * @example
    * // returns [{id: 123, comment: [], comment_text...}, {id: 456, comment: [], comment_text...}]
-   * Comments.getViewComments("viewId");
+   * comments.getViewComments("viewId");
    */
   async getViewComments(viewId) {
     const viewComments = await this.request.get(`${this.baseUrl}/view/${viewId}${pathUrl}`, {
@@ -136,13 +143,13 @@ class Comments {
    * Updates a Comment.
    *
    * @async
-   * @function UpdateComment
+   * @method
    * @param {number} commentId - The ID of the comment to be updated.
    * @param {string} comment - The new comment value.
    * @return {Promise<Object>} Returns an empty object when the update was successfully performed by ClickUp.
    * @example
    * // returns {}
-   * Comments.updateComment("CommentId", "New Comment");
+   * comments.updateComment("CommentId", "New Comment");
    */
   async updateComment(commentId, comment) {
     const updatedComment = await this.request.put(`${this.baseUrl}${pathUrl}/${commentId}`, {
@@ -157,12 +164,12 @@ class Comments {
    * Deletes a given Comment.
    *
    * @async
-   * @function deleteComment
+   * @method
    * @param {number} commentId - The Comment ID.
    * @return {Promise<Array.<Object>>} Returns an empty object when the deletion was successfully performed by ClickUp.
    * @example
    * // returns {}
-   * Comments.deleteComment("CommentId");
+   * comments.deleteComment("CommentId");
    */
   async deleteComment(commentId) {
     const comment = await this.request.delete(`${this.baseUrl}${pathUrl}/${commentId}`, {

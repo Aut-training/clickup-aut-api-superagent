@@ -16,7 +16,8 @@
     "test-tags": "./node_modules/.bin/mocha tests/*.spec.js --debug-brk --timeout 10000 --file ./tests/setup.js --fgrep \"Tags Api endpoint\"",
     "test-tasks": "./node_modules/.bin/mocha tests/*.spec.js --debug-brk --timeout 10000 --file ./tests/setup.js --fgrep \"Tasks Api endpoint\"",
     "test-teams": "./node_modules/.bin/mocha tests/*.spec.js --debug-brk --timeout 10000 --file ./tests/setup.js --fgrep \"Teams Api endpoint\"",
-    "test-views": "./node_modules/.bin/mocha tests/*.spec.js --debug-brk --timeout 10000 --file ./tests/setup.js --fgrep \"Views Api endpoint\""
+    "test-views": "./node_modules/.bin/mocha tests/*.spec.js --debug-brk --timeout 10000 --file ./tests/setup.js --fgrep \"Views Api endpoint\"",
+    "doc": "jsdoc ./README.md ./tests/setup.js ./Requesters/SuperAgent.js ./ClickUpApiV2/Data/helper.js ./ClickUpApiV2/ClickUpApi.js ./ClickUpApiV2/Endpoints/CheckLists.js ./ClickUpApiV2/Endpoints/Comments.js ./ClickUpApiV2/Endpoints/Folders.js ./ClickUpApiV2/Endpoints/Goals.js ./ClickUpApiV2/Endpoints/Lists.js ./ClickUpApiV2/Endpoints/Members.js ./ClickUpApiV2/Endpoints/Spaces.js ./ClickUpApiV2/Endpoints/Tags.js ./ClickUpApiV2/Endpoints/Tasks.js ./ClickUpApiV2/Endpoints/TaskTemplates.js ./ClickUpApiV2/Endpoints/Teams.js ./ClickUpApiV2/Endpoints/Views.js -d docs"
   },
   "keywords": [],
   "author": "",

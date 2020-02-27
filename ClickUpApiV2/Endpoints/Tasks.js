@@ -1,3 +1,9 @@
+/**
+ * Tasks module for ClickUp API endpoint methods.
+ * @module Tasks
+ */
+
+/** @constant {string} - Path URL for the endpoint */
 const pathUrl = '/task';
 
 /**
@@ -21,7 +27,7 @@ class Tasks {
    * Creates a new Task in ClickUp inside a list.
    *
    * @async
-   * @function createTask
+   * @method
    * @param {string|number} listId - The List ID to create the task.
    * @param {string} name - The name to set to the Task.
    * @param {string} content - The content/description to set to the Task.
@@ -39,7 +45,7 @@ class Tasks {
    * Updates a Task in ClickUp.
    *
    * @async
-   * @function updateTask
+   * @method
    * @param {string|number} taskId - The Task ID.
    * @param {string} name - The new name to set to the Task.
    * @param {string} content - The content/description to set to the Task.
@@ -57,7 +63,7 @@ class Tasks {
    * Deletes a Task in ClickUp.
    *
    * @async
-   * @function deleteTask
+   * @method
    * @param {string|number} taskId - The Task ID.
    * @return {Promise<Object>} An empty object if the deletion was successful by ClickUp.
    * @example
@@ -73,7 +79,7 @@ class Tasks {
    * Gets an array of Tasks in a List in ClickUp.
    *
    * @async
-   * @function getTasks
+   * @method
    * @param {string|number} listId - The List ID.
    * @return {Promise<Array.<Object>>} An Array of Tasks in a List.
    * @example
@@ -89,7 +95,7 @@ class Tasks {
    * Gets an specific Task by its ID in ClickUp.
    *
    * @async
-   * @function getTask
+   * @method
    * @param {string|number} taskId - The Task ID.
    * @return {Promise<Object>} The Task object searched by ClickUp.
    * @example
@@ -105,7 +111,7 @@ class Tasks {
    * Gets an array of Tasks in a Team in ClickUp.
    *
    * @async
-   * @function getFilteredTeamTasks
+   * @method
    * @param {string|number} teamId - The Task ID.
    * @return {Promise<Array.<Object>>} An Array of Tasks in a Team.
    * @example
@@ -116,6 +122,7 @@ class Tasks {
     const tasks = await this.request.get(`${this.baseUrl}/team/${teamId}${pathUrl}`, { archived: false }, { 'Authorization': this.apiKey });
     return tasks.tasks;
   }
+  
 }
 
 module.exports = Tasks;

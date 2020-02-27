@@ -1,3 +1,9 @@
+/**
+ * Tags module for ClickUp API endpoint methods.
+ * @module Tags
+ */
+
+/** @constant {string} - Path URL for the endpoint */
 const pathUrl = '/tag';
 
 /**
@@ -21,7 +27,7 @@ class Tags {
    * Creates a new Tag for a Space in ClickUp.
    *
    * @async
-   * @function createSpaceTag
+   * @method
    * @param {string|number} spaceId - The Space ID to create the Tag.
    * @param {string} name - The name to set to the Tag. (It will be converted to lowercase)
    * @param {string} color - The color to set to the Tag in hex.
@@ -40,7 +46,7 @@ class Tags {
    * Creates a new Tag for a Task in ClickUp.
    *
    * @async
-   * @function createTaskTag
+   * @method
    * @param {string|number} taskId - The Task ID to create the Tag.
    * @param {string} name - The name to set to the Tag. (It will be converted to lowercase)
    * @return {Promise<Object>} An empty object if the creation was successful by ClickUp.
@@ -57,7 +63,7 @@ class Tags {
    * Updates a Tag in ClickUp.
    *
    * @async
-   * @function updateTag
+   * @method
    * @param {string|number} spaceId - The Space ID to create the Tag.
    * @param {string} name - The new name to set to the Tag. (It will be converted to lowercase)
    * @return {Promise<Object>} The Tag object updated by ClickUp.
@@ -74,7 +80,7 @@ class Tags {
    * Deletes a Tag in a Space in ClickUp.
    *
    * @async
-   * @function deleteSpaceTag
+   * @method
    * @param {string|number} spaceId - The Space ID.
    * @param {string} name - The name of the Tag to delete.
    * @return {Promise<Object>} An empty object if the deletion was successful by ClickUp.
@@ -91,7 +97,7 @@ class Tags {
    * Removes a Tag from a task in ClickUp.
    *
    * @async
-   * @function removeTagTask
+   * @method
    * @param {string|number} taskId - The Task ID.
    * @param {string} name - The name of the Tag to remove.
    * @return {Promise<Object>} An empty object if the deletion was successful by ClickUp.
@@ -108,7 +114,7 @@ class Tags {
    * Gets an array of Tags in a Space in ClickUp.
    *
    * @async
-   * @function getTagsFromSpace
+   * @method
    * @param {string|number} spaceId - The Space ID.
    * @return {Promise<Array.<Object>>} An Array of Tags in a Space.
    * @example
@@ -119,6 +125,7 @@ class Tags {
     const tags = await this.request.get(`${this.baseUrl}/space/${spaceId}${pathUrl}`, null, { 'Authorization': this.apiKey });
     return tags.tags;
   }
+  
 }
 
 module.exports = Tags;

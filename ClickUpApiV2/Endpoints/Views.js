@@ -1,3 +1,9 @@
+/**
+ * Views module for ClickUp API endpoint methods.
+ * @module Views
+ */
+
+/** @constant {string} - Path URL for the endpoint */
 const pathUrl = '/view';
 
 /**
@@ -21,7 +27,7 @@ class Views {
    * Creates a new Team View in ClickUp.
    *
    * @async
-   * @function createTeamView
+   * @method
    * @param {string|number} teamId - The Team ID to create the Team View.
    * @param {string} name - The name to set to the Team View.
    * @return {Promise<Object>} The View object created by ClickUp.
@@ -38,7 +44,7 @@ class Views {
    * Creates a new Space View in ClickUp.
    *
    * @async
-   * @function createSpaceView
+   * @method
    * @param {string|number} spaceId - The Space ID to create the Space View.
    * @param {string} name - The name to set to the Space View.
    * @return {Promise<Object>} The View object created by ClickUp.
@@ -55,7 +61,7 @@ class Views {
    * Creates a new Folder View in ClickUp.
    *
    * @async
-   * @function createFolderView
+   * @method
    * @param {string|number} folderId - The Folder ID to create the Folder View.
    * @param {string} name - The name to set to the Folder View.
    * @return {Promise<Object>} The View object created by ClickUp.
@@ -72,7 +78,7 @@ class Views {
    * Creates a new List View in ClickUp.
    *
    * @async
-   * @function createListView
+   * @method
    * @param {string|number} listId - The List ID to create the List View.
    * @param {string} name - The name to set to the List View.
    * @return {Promise<Object>} The View object created by ClickUp.
@@ -89,7 +95,7 @@ class Views {
    * Updates a View in ClickUp.
    *
    * @async
-   * @function updateView
+   * @method
    * @param {string|number} viewId - The View ID.
    * @param {string} name - The new name to set to the View.
    * @return {Promise<Object>} The View object updated by ClickUp.
@@ -153,7 +159,7 @@ class Views {
    * Deletes a View in ClickUp.
    *
    * @async
-   * @function deleteView
+   * @method
    * @param {string|number} viewId - The View ID.
    * @return {Promise<Object>} An empty object if the deletion was successful by ClickUp.
    * @example
@@ -169,7 +175,7 @@ class Views {
    * Gets an array of Team Views in ClickUp.
    *
    * @async
-   * @function getTeamViews
+   * @method
    * @param {string|number} teamId - The Team ID.
    * @return {Promise<Array.<Object>>} An Array of Team Views.
    * @example
@@ -185,7 +191,7 @@ class Views {
    * Gets an array of Space Views in ClickUp.
    *
    * @async
-   * @function getSpaceViews
+   * @method
    * @param {string|number} spaceId - The Space ID.
    * @return {Promise<Array.<Object>>} An Array of Space Views.
    * @example
@@ -201,7 +207,7 @@ class Views {
    * Gets an array of Folder Views in ClickUp.
    *
    * @async
-   * @function getFolderViews
+   * @method
    * @param {string|number} folderId - The Folder ID.
    * @return {Promise<Array.<Object>>} An Array of Folder Views.
    * @example
@@ -217,7 +223,7 @@ class Views {
    * Gets an array of List Views in ClickUp.
    *
    * @async
-   * @function getListViews
+   * @method
    * @param {string|number} listId - The List ID.
    * @return {Promise<Array.<Object>>} An Array of List Views.
    * @example
@@ -233,7 +239,7 @@ class Views {
    * Gets an array of Tasks in a view in ClickUp.
    *
    * @async
-   * @function getTaskFromView
+   * @method
    * @param {string|number} viewId - The View ID.
    * @param {number} [data=0] page - The Page to fetch if there is a significant number of tasks.
    * @return {Promise<Array.<Object>>} An Array of Tasks from a View.
@@ -250,7 +256,7 @@ class Views {
    * Gets an specific View in ClickUp.
    *
    * @async
-   * @function getView
+   * @method
    * @param {string|number} viewId - The View ID.
    * @return {Promise<Object>} The View object searched by ClickUp.
    * @example
@@ -261,6 +267,7 @@ class Views {
     const view = await this.request.get(`${this.baseUrl}${pathUrl}/${viewId}`, { archived: false }, { 'Authorization': this.apiKey });
     return view.view;
   }
+  
 }
 
 module.exports = Views;

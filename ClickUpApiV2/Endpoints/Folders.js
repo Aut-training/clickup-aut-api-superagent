@@ -1,7 +1,13 @@
+/**
+ * Folders module for ClickUp API endpoint methods.
+ * @module Folders
+ */
+
+/** @constant {string} - Path URL for the endpoint */
 const pathUrl = '/folder';
 
 /**
- * Class for using Folders ClickUp Endpoint.
+ * Class implementation for Folders ClickUp Endpoint methods.
  * @class
  */
 class Folders {
@@ -21,7 +27,7 @@ class Folders {
    * Creates a new Folder in ClickUp inside a space.
    *
    * @async
-   * @function createFolder
+   * @method
    * @param {string|number} spaceId - The Space ID to create the folder.
    * @param {string} name - The name to set to the Folder.
    * @return {Promise<Object>} The Folder object created by ClickUp.
@@ -38,7 +44,7 @@ class Folders {
    * Updates a Folder in ClickUp.
    *
    * @async
-   * @function updateFolder
+   * @method
    * @param {string|number} folderId - The Folder ID.
    * @param {string} name - The new name to set to the Folder.
    * @return {Promise<Object>} The Folder object updated by ClickUp.
@@ -55,7 +61,7 @@ class Folders {
    * Deletes a Folder in ClickUp.
    *
    * @async
-   * @function deleteFolder
+   * @method
    * @param {string|number} folderId - The Folder ID.
    * @return {Promise<Object>} An empty object if the deletion was successful by ClickUp.
    * @example
@@ -71,7 +77,7 @@ class Folders {
    * Gets an array of Folders in a Space in ClickUp.
    *
    * @async
-   * @function getFolders
+   * @method
    * @param {string|number} spaceId - The Space ID.
    * @return {Promise<Array.<Object>>} An Array of Folders in a Space.
    * @example
@@ -87,7 +93,7 @@ class Folders {
    * Gets an specific Space by its ID in ClickUp.
    *
    * @async
-   * @function getFolder
+   * @method
    * @param {string|number} folderId - The Folder ID.
    * @return {Promise<Object>} The Folder object searched by ClickUp.
    * @example
@@ -98,6 +104,7 @@ class Folders {
     const space = await this.request.get(`${this.baseUrl}${pathUrl}/${folderId}`, { archived: false }, { 'Authorization': this.apiKey });
     return space;
   }
+  
 }
 
 module.exports = Folders;

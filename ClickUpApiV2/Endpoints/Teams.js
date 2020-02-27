@@ -1,3 +1,9 @@
+/**
+ * Teams module for ClickUp API endpoint methods.
+ * @module Teams
+ */
+
+/** @constant {string} - Path URL for the endpoint */
 const pathUrl = '/team';
 
 /**
@@ -21,7 +27,7 @@ class Teams {
    * Gets an array of Teams in ClickUp.
    *
    * @async
-   * @function getTeams
+   * @method
    * @return {Promise<Array.<Object>>} An Array of Team in Clickup.
    * @example
    * // returns [{id: 123, name: "Team 1", ...}, {id: 456, name: "Team 2", ...}]
@@ -31,6 +37,7 @@ class Teams {
     const teams = await this.request.get(`${this.baseUrl}${pathUrl}`, null, { 'Authorization': this.apiKey });
     return teams.teams;
   }
+  
 }
 
 module.exports = Teams;

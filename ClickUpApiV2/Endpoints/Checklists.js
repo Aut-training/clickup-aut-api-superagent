@@ -1,7 +1,13 @@
+/**
+ * Checklists module for ClickUp API endpoint methods.
+ * @module Checklists
+ */
+
+/** @constant {string} - Path URL for the endpoint */
 const pathUrl = '/Checklist';
 
 /**
- * Class for using Checklist ClickUp Endpoint.
+ * Class implementation for Checklist ClickUp Endpoint methods.
  * @class
  */
 class Checklists {
@@ -21,7 +27,7 @@ class Checklists {
    * Creates a new Checklist within a task.
    *
    * @async
-   * @function createChecklist
+   * @method
    * @param {string|number} taskId - The Task ID to create the Checklist.
    * @param {string} name - The name to set to the Checklist.
    * @return {Promise<Object>} The Checklist object created by ClickUp.
@@ -40,7 +46,7 @@ class Checklists {
    * Updates a Checklist within a task.
    *
    * @async
-   * @function updateChecklist
+   * @method
    * @param {string|number} checklistId - The Checklist ID.
    * @param {string} name - The new name to set to the Checklist.
    * @param {number} position - The new position to set to the Checklist.
@@ -61,7 +67,7 @@ class Checklists {
    * Deletes a Checklist within a task.
    *
    * @async
-   * @function deleteChecklist
+   * @method
    * @param {string|number} checklistId - The Checklist ID.
    * @return {Promise<Object>} It should return an empty object.
    * @example
@@ -79,7 +85,7 @@ class Checklists {
    * Creates a new Item within a Checklist.
    *
    * @async
-   * @function createChecklistItem
+   * @method
    * @param {string|number} checklistId - The Checklist ID to create the Item.
    * @param {string} name - The name to set to the Checklist Item.
    * @return {Promise<Object>} The Item object created by ClickUp.
@@ -99,7 +105,7 @@ class Checklists {
    * Updates an Item within a Checklist.
    *
    * @async
-   * @function updateChecklistItem
+   * @method
    * @param {string|number} checklistId - The Checklist ID to create the Item.
    * @param {string|number} checklistItemId - The Checklist Item ID.
    * @param {string} name - The new name to set to the Checklist Item.
@@ -123,7 +129,7 @@ class Checklists {
    * Deletes an Item within a Checklist.
    *
    * @async
-   * @function deleteChecklistItem
+   * @method
    * @param {string|number} checklistId - The Checklist ID to create the Item.
    * @param {string|number} checklistItemId - The Checklist Item ID.
    * @return {Promise<Object>} It should return an empty object.

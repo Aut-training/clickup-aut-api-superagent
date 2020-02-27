@@ -7,9 +7,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ## Prerequisites
 
-```
-Nodejs
-```
+[Nodejs](https://nodejs.org/en/)
 
 ## Installing
 
@@ -39,6 +37,14 @@ Run eslint command inside the project folder
 
 ```
 npm run eslint
+```
+
+## Generate Documentation
+
+Run doc command inside the project folder and the documentation files will be located at /docs folder
+
+```
+npm run doc
 ```
 
 ## Debug with Visaul Studio Code
@@ -282,6 +288,8 @@ Add this configuration to launch.json in .vscode folder in the project.
 
 ## Authors
 
+* **Romer Chavez** - *Automation Engineer* - [Github](https://github.com/R0m3rCh)
+* **Mauricio Iriarte** - *Automation Engineer* - [Github](https://github.com/miv1)
 * **Luis Lopez** - *Automation Engineer* - [Github](https://github.com/lolpez)
 
 ## License

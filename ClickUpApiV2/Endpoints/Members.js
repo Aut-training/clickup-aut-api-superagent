@@ -1,7 +1,13 @@
+/**
+ * Members module for ClickUp API endpoint methods.
+ * @module Members
+ */
+
+/** @constant {string} - Path URL for the endpoint */
 const pathUrl = '/Member';
 
 /**
- * Class for using Lists ClickUp Endpoint.
+ * Class for using Members ClickUp Endpoint.
  * @class
  */
 class Member {
@@ -21,12 +27,12 @@ class Member {
    * Get an array of Members in a task in ClickUp.
    *
    * @async
-   * @function getTaskMembers
+   * @method
    * @param {string|number} taskId - The task ID.
    * @return {Promise<Array.<Object>>} An Array of Members.
    * @example
-   * // returns [{"id": 812,
-      "username": "Banana John", "email": "john_banana@example.com",, ...}, {"username": "Pepe Pepon", "email": "pepe_pepon@example.com", ...}]   
+   * // returns [{"id": 812, "username": "Banana John", "email": "john_banana@example.com",, ...}, {"username": "Pepe Pepon", "email": "pepe_pepon@example.com", ...}]
+   * members.getTaskMembers("taskId");
    */
   async getTaskMembers(taskId) {
     const taskMembers = await this.request.get(`${this.baseUrl}/task/${taskId}${pathUrl}`, null, { 'Authorization': this.apiKey });
@@ -37,17 +43,18 @@ class Member {
    * Get an array of Members in a List in ClickUp.
    *
    * @async
-   * @function getListMembers
+   * @method
    * @param {string|number} listId - The task ID.
    * @return {Promise<Array.<Object>>} An Array of Members.
    * @example
-   * // returns [{"id": 812,
-      "username": "Banana John", "email": "john_banana@example.com",, ...}, {"username": "Pepe Perez", "email": "pepe_perez@example.com", ...}]   
+   * // returns [{"id": 812, "username": "Banana John", "email": "john_banana@example.com",, ...}, {"username": "Pepe Perez", "email": "pepe_perez@example.com", ...}]
+   * members.getListMembers("taskId");
    */
   async getListMembers(listId) {
     const listMembers = await this.request.get(`${this.baseUrl}/list/${listId}${pathUrl}`, { archived: false }, { 'Authorization': this.apiKey });
     return listMembers.members;
   }
+  
 }
 
 module.exports = Member;

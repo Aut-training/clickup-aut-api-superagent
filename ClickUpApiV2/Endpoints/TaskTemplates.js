@@ -1,3 +1,9 @@
+/**
+ * Task Templates module for ClickUp API endpoint methods.
+ * @module TaskTemplates
+ */
+
+/** @constant {string} - Path URL for the endpoint */
 const pathUrl = '/taskTemplate';
 
 /**
@@ -21,7 +27,7 @@ class TaskTemplates {
    * Creates a new Task from a Template in ClickUp inside a list.
    *
    * @async
-   * @function createTaskFromTemplate
+   * @method
    * @param {string|number} listId - The List ID to create the task.
    * @param {string|number} templateId - The Task Template ID to create the task from.
    * @param {string} name - The new name to set to the Task.
@@ -39,7 +45,7 @@ class TaskTemplates {
    * Gets an array of Task Templates in a Team in ClickUp.
    *
    * @async
-   * @function getTaskTemplates
+   * @method
    * @param {string|number} teamId - The Team ID.
    * @param {number} [data=0] page - The Page to fetch if there is a significant number of task templates.
    * @return {Promise<Array.<Object>>} An Array of Task Templates in a Team.

@@ -1,3 +1,9 @@
+/**
+ * Lists module for ClickUp API endpoint methods.
+ * @module Lists
+ */
+
+/** @constant {string} - Path URL for the endpoint */
 const pathUrl = '/List';
 
 /**
@@ -21,7 +27,7 @@ class Lists {
    * Creates a new List in ClickUp inside a folder.
    *
    * @async
-   * @function createList
+   * @method
    * @param {string|number} folderId - The Folder ID to create the list.
    * @param {string} name - The name to set to the List.
    * @param {string} content - The content to set to the list.
@@ -42,7 +48,7 @@ class Lists {
    * Creates a new List in ClickUp inside a space.
    *
    * @async
-   * @function createFolderlessList
+   * @method
    * @param {string|number} spaceId - The Space ID to create the list (without folder).
    * @param {string} name - The name to set to the List.
    * @param {string} content - The content to set to the list.
@@ -63,7 +69,7 @@ class Lists {
    * Updates a List in ClickUp.
    *
    * @async
-   * @function updateList
+   * @method
    * @param {string|number} listId - The List ID.
    * @param {string} name - The name to set to the List.
    * @param {string} content - The content to set to the list.
@@ -84,7 +90,7 @@ class Lists {
    * Deletes a List in ClickUp.
    *
    * @async
-   * @function deleteList
+   * @method
    * @param {string|number} listId - The List ID.
    * @return {Promise<Object>} An empty object if the deletion was successful by ClickUp.
    * @example
@@ -100,7 +106,7 @@ class Lists {
    * Gets an array of Lists in a Folder in ClickUp.
    *
    * @async
-   * @function getLists
+   * @method
    * @param {string|number} folderId - The Folder ID.
    * @return {Promise<Array.<Object>>} An Array of Lists in a Folder.
    * @example
@@ -116,7 +122,7 @@ class Lists {
    * Gets an array of Lists without Folders in ClickUp.
    *
    * @async
-   * @function getFolderlessLists
+   * @method
    * @param {string|number} spaceId - The Space ID.
    * @return {Promise<Array.<Object>>} An Array of Lists without Folders.
    * @example
@@ -132,7 +138,7 @@ class Lists {
    * Gets an specific List by its ID in ClickUp.
    *
    * @async
-   * @function getList
+   * @method
    * @param {string|number} folderId - The Folder ID.
    * @return {Promise<Object>} The List object searched by ClickUp.
    * @example
@@ -143,6 +149,7 @@ class Lists {
     const list = await this.request.get(`${this.baseUrl}${pathUrl}/${folderId}`, { archived: false }, { 'Authorization': this.apiKey });
     return list;
   }
+  
 }
 
 module.exports = Lists;
