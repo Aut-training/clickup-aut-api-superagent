@@ -47,9 +47,56 @@ Run doc command inside the project folder and the documentation files will be lo
 npm run doc
 ```
 
+## Project Structure
+
+    ├── 📂.vscode                   # Folder for Visual Code configuration
+    │   └── ⚙launch.jsons           # Configuration file for Debug mode in Visual Code
+    ├── 📂ClickUpApiV2              # ClickUp module for API usage
+    │   ├── 📂Data
+    │   │   └── 📜helper.js         # Helper file for project configuration and usage
+    │   ├── 📂Endpoints             # Modules for ClickUp available endpoints API
+    │   │   ├── 📜Checklists.js
+    │   │   ├── 📜Comments.js
+    │   │   ├── 📜Folders.js
+    │   │   ├── 📜Goals.js
+    │   │   ├── 📜Lists.js
+    │   │   ├── 📜Members.js
+    │   │   ├── 📜Spaces.js
+    │   │   ├── 📜Tags.js
+    │   │   ├── 📜Tasks.js
+    │   │   ├── 📜TaskTemplates.js
+    │   │   ├── 📜Teams.js
+    │   │   └── 📜Views.js
+    │   └── 📜ClickUpApi.js         # ClickUp API interface
+    ├── 📂docs                      # Folder to store the project documentation (GIT ignored by default)
+    ├── 📂node_modules              # Folder to store all the project's dependencies (GIT ignored by default)
+    ├── 📂Requesters                # Folder to store all HTTP request modules
+    │   └── 📜SuperAgent.js
+    ├── 📂tests                     # Mocha tests
+    │   ├── 🧪checklists.spec.js
+    │   ├── 🧪comments.spec.js
+    │   ├── 🧪folders.spec.js
+    │   ├── 🧪goals.spec.js
+    │   ├── 🧪lists.spec.js
+    │   ├── 🧪member.spec.js
+    │   ├── 📜setup.js              # Mocha global hooks
+    │   ├── 🧪spaces.spec.js
+    │   ├── 🧪tags.spec.js
+    │   ├── 🧪teams.spec.js  
+    │   └── 🧪views.spec.js
+    ├── ⚙.eslintrc.json            # Eslint code style configuration
+    ├── ⚙.gitignore                # Git ignore configuration
+    ├── 📄LICENCE
+    ├── ⚙package-lock.json
+    ├── ⚙package.json              # Project configuration
+    └── 📄README
+
+
 ## Debug with Visaul Studio Code
 
 Add this configuration to launch.json in .vscode folder in the project.
+
+<details><summary>View Configuration</summary>
 
 ```javascript
 {
@@ -285,6 +332,7 @@ Add this configuration to launch.json in .vscode folder in the project.
     ]
 }
 ```
+</details>
 
 ## Authors
 
