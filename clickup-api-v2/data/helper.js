@@ -1,5 +1,10 @@
-function generateID(){
-  return (new Date().getTime() / 1000 | 0).toString(16) + 'xxxxxxxxxxxxxxxx'.replace(/[x]/g, function () {
+/**
+ * @function generateID
+ * @return {string}
+ */
+function generateID() {
+  return (new Date().getTime() / 1000 | 0).toString(16) +
+  'xxxxxxxxxxxxxxxx'.replace(/[x]/g, function() {
     return (Math.random() * 16 | 0).toString(16);
   }).toLowerCase();
 }
@@ -21,7 +26,7 @@ module.exports = {
     'id': '3014652',
     'name': 'Automation\'s Workspace',
     'color': '#7b68ee',
-    'avatar': null   
+    'avatar': null,
   },
   /**
    * Creates a random unique ID.
@@ -34,5 +39,5 @@ module.exports = {
    */
   generateID: generateID,
   listName: 'List testing',
-  taskName: 'Task testing'
+  taskName: 'Task testing',
 };

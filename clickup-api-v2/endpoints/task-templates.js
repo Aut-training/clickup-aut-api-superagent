@@ -29,7 +29,7 @@ class TaskTemplates {
    * @async
    * @method
    * @param {string|number} listId - The List ID to create the task.
-   * @param {string|number} templateId - The Task Template ID to create the task from.
+   * @param {string|number} templateId - Task Template ID to create the task.
    * @param {string} name - The new name to set to the Task.
    * @return {Promise<Object>} The Task object created by ClickUp.
    * @example
@@ -37,7 +37,11 @@ class TaskTemplates {
    * taskTemplates.createTaskFromTemplate("listId", "templateId", "My Task");
    */
   async createTaskFromTemplate(listId, templateId, name) {
-    const taskTemplate = await this.request.post(`${this.baseUrl}/list/${listId}${pathUrl}/${templateId}`, { name: name }, { 'Authorization': this.apiKey });
+    const taskTemplate = await this.request.post(
+        `${this.baseUrl}/list/${listId}${pathUrl}/${templateId}`,
+        {name: name},
+        {'Authorization': this.apiKey},
+    );
     return taskTemplate;
   }
 
@@ -47,17 +51,21 @@ class TaskTemplates {
    * @async
    * @method
    * @param {string|number} teamId - The Team ID.
-   * @param {number} [data=0] page - The Page to fetch if there is a significant number of task templates.
+   * @param {number} [page=0] - The Pagination to fetch.
    * @return {Promise<Array.<Object>>} An Array of Task Templates in a Team.
    * @example
-   * // returns [{id: 123, name: "Task Template 1", ...}, {id: 456, name: "Task Template 2", ...}]
+   * // returns [{id: 123, name: "Task Template 1", ...},
+   *  {id: 456, name: "Task Template 2", ...}]
    * taskTemplate.getTaskTemplates("teamId");
    */
   async getTaskTemplates(teamId, page=0) {
-    const taskTemplates = await this.request.get(`${this.baseUrl}/team/${teamId}${pathUrl}`, { page: page }, { 'Authorization': this.apiKey });
+    const taskTemplates = await this.request.get(
+        `${this.baseUrl}/team/${teamId}${pathUrl}`,
+        {page: page},
+        {'Authorization': this.apiKey},
+    );
     return taskTemplates.templates;
   }
-  
 }
 
 module.exports = TaskTemplates;

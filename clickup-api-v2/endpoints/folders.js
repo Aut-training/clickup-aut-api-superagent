@@ -36,7 +36,11 @@ class Folders {
    * folders.createFolder("My Folder");
    */
   async createFolder(spaceId, name) {
-    const folder = await this.request.post(`${this.baseUrl}/space/${spaceId}${pathUrl}`, { name: name }, { 'Authorization': this.apiKey });
+    const folder = await this.request.post(
+        `${this.baseUrl}/space/${spaceId}${pathUrl}`,
+        {name: name},
+        {'Authorization': this.apiKey},
+    );
     return folder;
   }
 
@@ -53,7 +57,11 @@ class Folders {
    * folders.updateFolder(123, "My Folder edited");
    */
   async updateFolder(folderId, name) {
-    const folderUpdated = await this.request.put(`${this.baseUrl}${pathUrl}/${folderId}`, { name: name }, { 'Authorization': this.apiKey });
+    const folderUpdated = await this.request.put(
+        `${this.baseUrl}${pathUrl}/${folderId}`,
+        {name: name},
+        {'Authorization': this.apiKey},
+    );
     return folderUpdated;
   }
 
@@ -63,13 +71,17 @@ class Folders {
    * @async
    * @method
    * @param {string|number} folderId - The Folder ID.
-   * @return {Promise<Object>} An empty object if the deletion was successful by ClickUp.
+   * @return {Promise<Object>} Empty object if the deletion was successful.
    * @example
    * // returns {}
    * folders.deleteFolder(123);
    */
   async deleteFolder(folderId) {
-    const folderDeleted = await this.request.delete(`${this.baseUrl}${pathUrl}/${folderId}`, { archived: false }, { 'Authorization': this.apiKey });
+    const folderDeleted = await this.request.delete(
+        `${this.baseUrl}${pathUrl}/${folderId}`,
+        {archived: false},
+        {'Authorization': this.apiKey},
+    );
     return folderDeleted;
   }
 
@@ -81,11 +93,16 @@ class Folders {
    * @param {string|number} spaceId - The Space ID.
    * @return {Promise<Array.<Object>>} An Array of Folders in a Space.
    * @example
-   * // returns [{id: 123, name: "Folder 1", ...}, {id: 456, name: "Folder 2", ...}]
+   * // returns [{id: 123, name: "Folder 1", ...},
+   *  {id: 456, name: "Folder 2", ...}]
    * folders.getFolders("SpaceId");
    */
   async getFolders(spaceId) {
-    const folders = await this.request.get(`${this.baseUrl}/space/${spaceId}${pathUrl}`, { archived: false }, { 'Authorization': this.apiKey });
+    const folders = await this.request.get(
+        `${this.baseUrl}/space/${spaceId}${pathUrl}`,
+        {archived: false},
+        {'Authorization': this.apiKey},
+    );
     return folders.folders;
   }
 
@@ -101,10 +118,13 @@ class Folders {
    * folders.getFolder(123);
    */
   async getFolder(folderId) {
-    const space = await this.request.get(`${this.baseUrl}${pathUrl}/${folderId}`, { archived: false }, { 'Authorization': this.apiKey });
+    const space = await this.request.get(
+        `${this.baseUrl}${pathUrl}/${folderId}`,
+        {archived: false},
+        {'Authorization': this.apiKey},
+    );
     return space;
   }
-  
 }
 
 module.exports = Folders;

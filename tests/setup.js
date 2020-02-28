@@ -1,5 +1,5 @@
-const helper = require('../ClickUpApiV2/Data/helper');
-const clickUpApi = require('../ClickUpApiV2/ClickUpApi');
+const helper = require('../clickup-api-v2/data/helper');
+const clickUpApi = require('../clickup-api-v2/clickup-api');
 
 /**
  * Executes commands before the testing run.
@@ -7,11 +7,19 @@ const clickUpApi = require('../ClickUpApiV2/ClickUpApi');
  * @async
  * @function before
  */
-before(async function  () {
-  this.createdSpace = await clickUpApi.spaces.createSpace(helper.team.id, helper.generateID());
-  this.createdFolder = await clickUpApi.folders.createFolder(this.createdSpace.id, helper.generateID());
-  this.createdList = await clickUpApi.lists.createList(this.createdFolder.id, helper.generateID());
-  this.createdTask = await clickUpApi.tasks.createTask(this.createdList.id, helper.generateID(), helper.generateID());
+before(async function() {
+  this.createdSpace = await clickUpApi.spaces
+      .createSpace(helper.team.id, helper.generateID());
+  this.createdFolder = await clickUpApi.folders
+      .createFolder(this.createdSpace.id, helper.generateID());
+  this.createdList = await clickUpApi.lists
+      .createList(this.createdFolder.id, helper.generateID());
+  this.createdTask = await clickUpApi.tasks
+      .createTask(
+          this.createdList.id,
+          helper.generateID(),
+          helper.generateID(),
+      );
 });
 
 /**
@@ -20,6 +28,6 @@ before(async function  () {
  * @async
  * @function before
  */
-after(async function () {
+after(async function() {
   await clickUpApi.spaces.deleteSpace(this.createdSpace.id);
 });

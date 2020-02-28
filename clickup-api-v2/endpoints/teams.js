@@ -22,7 +22,7 @@ class Teams {
     this.request = request;
     this.apiKey = apiKey;
   }
- 
+
   /**
    * Gets an array of Teams in ClickUp.
    *
@@ -34,10 +34,13 @@ class Teams {
    * teams.getTeams();
    */
   async getTeams() {
-    const teams = await this.request.get(`${this.baseUrl}${pathUrl}`, null, { 'Authorization': this.apiKey });
+    const teams = await this.request.get(
+        `${this.baseUrl}${pathUrl}`,
+        null,
+        {'Authorization': this.apiKey},
+    );
     return teams.teams;
   }
-  
 }
 
 module.exports = Teams;

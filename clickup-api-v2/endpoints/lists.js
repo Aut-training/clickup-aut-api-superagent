@@ -37,10 +37,14 @@ class Lists {
    * lists.createList("FolderId", "New List Name", "New List Content");
    */
   async createList(folderId, name, content) {
-    const list = await this.request.post(`${this.baseUrl}/folder/${folderId}${pathUrl}`, {
-      name: name,
-      content: content
-    }, { 'Authorization': this.apiKey });
+    const list = await this.request.post(
+        `${this.baseUrl}/folder/${folderId}${pathUrl}`,
+        {
+          name: name,
+          content: content,
+        },
+        {'Authorization': this.apiKey},
+    );
     return list;
   }
 
@@ -49,7 +53,7 @@ class Lists {
    *
    * @async
    * @method
-   * @param {string|number} spaceId - The Space ID to create the list (without folder).
+   * @param {string|number} spaceId - The Space ID to create the list.
    * @param {string} name - The name to set to the List.
    * @param {string} content - The content to set to the list.
    * @return {Promise<Object>} The List object created by ClickUp.
@@ -58,10 +62,14 @@ class Lists {
    * lists.createFolderlessList("SpaceId", "New List Name", "New List Content");
    */
   async createFolderlessList(spaceId, name, content) {
-    const list = await this.request.post(`${this.baseUrl}/space/${spaceId}${pathUrl}`, {
-      name: name,
-      content: content
-    }, { 'Authorization': this.apiKey });
+    const list = await this.request.post(
+        `${this.baseUrl}/space/${spaceId}${pathUrl}`,
+        {
+          name: name,
+          content: content,
+        },
+        {'Authorization': this.apiKey},
+    );
     return list;
   }
 
@@ -79,10 +87,14 @@ class Lists {
    * lists.updateList(123, "My List edited");
    */
   async updateList(listId, name, content) {
-    const listUpdated = await this.request.put(`${this.baseUrl}${pathUrl}/${listId}`, {
-      name: name,
-      content: content
-    }, { 'Authorization': this.apiKey });
+    const listUpdated = await this.request.put(
+        `${this.baseUrl}${pathUrl}/${listId}`,
+        {
+          name: name,
+          content: content,
+        },
+        {'Authorization': this.apiKey},
+    );
     return listUpdated;
   }
 
@@ -92,13 +104,17 @@ class Lists {
    * @async
    * @method
    * @param {string|number} listId - The List ID.
-   * @return {Promise<Object>} An empty object if the deletion was successful by ClickUp.
+   * @return {Promise<Object>} Empty object if the deletion was successful.
    * @example
    * // returns {}
    * lists.deleteList(123);
    */
   async deleteList(listId) {
-    const listDeleted = await this.request.delete(`${this.baseUrl}${pathUrl}/${listId}`, { archived: false }, { 'Authorization': this.apiKey });
+    const listDeleted = await this.request.delete(
+        `${this.baseUrl}${pathUrl}/${listId}`,
+        {archived: false},
+        {'Authorization': this.apiKey},
+    );
     return listDeleted;
   }
 
@@ -114,7 +130,11 @@ class Lists {
    * lists.getLists("FolderID");
    */
   async getLists(folderId) {
-    const lists = await this.request.get(`${this.baseUrl}/folder/${folderId}${pathUrl}`, { archived: false }, { 'Authorization': this.apiKey });
+    const lists = await this.request.get(
+        `${this.baseUrl}/folder/${folderId}${pathUrl}`,
+        {archived: false},
+        {'Authorization': this.apiKey},
+    );
     return lists.lists;
   }
 
@@ -130,7 +150,11 @@ class Lists {
    * lists.getFolderlessLists("SpaceID");
    */
   async getFolderlessLists(spaceId) {
-    const lists = await this.request.get(`${this.baseUrl}/space/${spaceId}${pathUrl}`, { archived: false }, { 'Authorization': this.apiKey });
+    const lists = await this.request.get(
+        `${this.baseUrl}/space/${spaceId}${pathUrl}`,
+        {archived: false},
+        {'Authorization': this.apiKey},
+    );
     return lists.lists;
   }
 
@@ -146,10 +170,13 @@ class Lists {
    * lists.getList(123);
    */
   async getList(folderId) {
-    const list = await this.request.get(`${this.baseUrl}${pathUrl}/${folderId}`, { archived: false }, { 'Authorization': this.apiKey });
+    const list = await this.request.get(
+        `${this.baseUrl}${pathUrl}/${folderId}`,
+        {archived: false},
+        {'Authorization': this.apiKey},
+    );
     return list;
   }
-  
 }
 
 module.exports = Lists;

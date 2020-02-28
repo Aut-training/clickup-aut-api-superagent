@@ -27,14 +27,16 @@ class SuperAgent {
    */
   async get(url, params = null, headers = null) {
     try {
-      const response = await request.get(url).query((params == null) ? {} : params).set((headers == null) ? {} : headers);
+      const response = await request.get(url)
+          .query((params == null) ? {} : params)
+          .set((headers == null) ? {} : headers);
       return response.body;
     } catch (error) {
       console.log(
-        {
-          message: error.message,
-          details: error.response.body
-        }
+          {
+            message: error.message,
+            details: error.response.body,
+          },
       );
     }
   }
@@ -53,14 +55,16 @@ class SuperAgent {
    */
   async post(url, data = null, headers = null) {
     try {
-      const response = await request.post(url).send((data == null) ? {} : data).set((headers == null) ? {} : headers);
+      const response = await request.post(url)
+          .send((data == null) ? {} : data)
+          .set((headers == null) ? {} : headers);
       return response.body;
     } catch (error) {
       console.log(
-        {
-          message: error.message,
-          details: error.response.body
-        }
+          {
+            message: error.message,
+            details: error.response.body,
+          },
       );
     }
   }
@@ -79,14 +83,16 @@ class SuperAgent {
    */
   async put(url, data = null, headers = null) {
     try {
-      const response = await request.put(url).send((data == null) ? {} : data).set(headers);
+      const response = await request.put(url)
+          .send((data == null) ? {} : data)
+          .set(headers);
       return response.body;
     } catch (error) {
       console.log(
-        {
-          message: error.message,
-          details: error.response.body
-        }
+          {
+            message: error.message,
+            details: error.response.body,
+          },
       );
     }
   }
@@ -101,18 +107,21 @@ class SuperAgent {
    * @param {Object} [headers=null] - The headers to go in the request.
    * @return {Promise<Object>} The Server response.
    * @example
-   * request.delete("URL", { id: 1, name: "my name to delete" }, { apiKey: 123 });
+   * request.delete("URL", { id: 1, name: "my name to delete" },
+   *  { apiKey: 123 });
    */
   async delete(url, data = null, headers = null) {
     try {
-      const response = await request.delete(url).send((data == null) ? {} : data).set(headers);
+      const response = await request.delete(url)
+          .send((data == null) ? {} : data)
+          .set(headers);
       return response.body;
     } catch (error) {
       console.log(
-        {
-          message: error.message,
-          details: error.response.body
-        }
+          {
+            message: error.message,
+            details: error.response.body,
+          },
       );
     }
   }

@@ -36,9 +36,11 @@ class Checklists {
    * checklist.createChecklist("TaskId", "New Checklist Name");
    */
   async createChecklist(taskId, name) {
-    const checklist = await this.request.post(`${this.baseUrl}/task/${taskId}${pathUrl}`, {
-      name: name
-    }, { 'Authorization': this.apiKey });
+    const checklist = await this.request.post(
+        `${this.baseUrl}/task/${taskId}${pathUrl}`,
+        {name: name},
+        {'Authorization': this.apiKey},
+    );
     return checklist;
   }
 
@@ -53,13 +55,15 @@ class Checklists {
    * @return {Promise<Object>} The Checklist object updated by ClickUp.
    * @example
    * // returns {"checklist": { "id": "123", "task_id": "1d55ac", "name", ...}}
-   * checklist.updateChecklist("ChecklistId", "New Checklist Name", "New Position");
+   * checklist.updateChecklist("ChecklistId", "New Checklist Name",
+   *  "New Position");
    */
   async updateChecklist(checklistId, name, position) {
-    const checklist = await this.request.put(`${this.baseUrl}${pathUrl}/${checklistId}`, {
-      name: name,
-      position: position
-    }, { 'Authorization': this.apiKey });
+    const checklist = await this.request.put(
+        `${this.baseUrl}${pathUrl}/${checklistId}`,
+        {name: name, position: position},
+        {'Authorization': this.apiKey},
+    );
     return checklist;
   }
 
@@ -75,9 +79,11 @@ class Checklists {
    * checklist.deleteChecklist("ChecklistId");
    */
   async deleteChecklist(checklistId) {
-    const checklist = await this.request.delete(`${this.baseUrl}${pathUrl}/${checklistId}`,{
-      archived: false
-    }, { 'Authorization': this.apiKey });
+    const checklist = await this.request.delete(
+        `${this.baseUrl}${pathUrl}/${checklistId}`,
+        {archived: false},
+        {'Authorization': this.apiKey},
+    );
     return checklist;
   }
 
@@ -90,14 +96,15 @@ class Checklists {
    * @param {string} name - The name to set to the Checklist Item.
    * @return {Promise<Object>} The Item object created by ClickUp.
    * @example
-   * // returns {"checklist": { "id": "9b137560", "task_id": "1d55ac", "name", ...}}
+   * // returns {"checklist": { "id": "9b137560", "task_id": "1d55ac", ...}}
    * checklist.createChecklistItem("ChecklistId", "New Checklist Item");
    */
   async createChecklistItem(checklistId, name) {
-    const checklistItem = await this.request.post(`${this.baseUrl}${pathUrl}/${checklistId}/checklist_item`, {
-      name: name,
-      assignee: null
-    }, { 'Authorization': this.apiKey });
+    const checklistItem = await this.request.post(
+        `${this.baseUrl}${pathUrl}/${checklistId}/checklist_item`,
+        {name: name, assignee: null},
+        {'Authorization': this.apiKey},
+    );
     return checklistItem;
   }
 
@@ -113,15 +120,16 @@ class Checklists {
    * @return {Promise<Object>} The Item object created by ClickUp.
    * @example
    * // returns {"checklist": { "id": "123", "task_id": "1d55ac", "name", ...}}
-   * checklist.updateChecklistItem("ChecklistId", "checklistItemId", "New Item Name","resolvedStatus");
+   * checklist.updateChecklistItem("ChecklistId", "checklistItemId",
+   *  "New Item Name","resolvedStatus");
    */
   async updateChecklistItem(checklistId, checklistItemId, name, resolved) {
-    const checklistItem = await this.request.put(`${this.baseUrl}${pathUrl}/${checklistId}/checklist_item/${checklistItemId}`, {
-      name: name,
-      assignee: null,
-      resolved: resolved,
-      parent: null
-    }, { 'Authorization': this.apiKey });
+    const checklistItem = await this.request.put(
+        `${this.baseUrl}${pathUrl}/${checklistId}/checklist_item/
+        ${checklistItemId}`,
+        {name: name, assignee: null, resolved: resolved, parent: null},
+        {'Authorization': this.apiKey},
+    );
     return checklistItem;
   }
 
@@ -138,12 +146,14 @@ class Checklists {
    * checklist.deleteChecklistItem("ChecklistId", "ChecklistItemId");
    */
   async deleteChecklistItem(checklistId, checklistItemId) {
-    const checklistItem = await this.request.delete(`${this.baseUrl}${pathUrl}/${checklistId}/checklist_item/${checklistItemId}`, {
-      archived: false
-    }, { 'Authorization': this.apiKey });
+    const checklistItem = await this.request.delete(
+        `${this.baseUrl}${pathUrl}/${checklistId}/checklist_item/
+        ${checklistItemId}`,
+        {archived: false},
+        {'Authorization': this.apiKey},
+    );
     return checklistItem;
   }
-
 }
 
 module.exports = Checklists;

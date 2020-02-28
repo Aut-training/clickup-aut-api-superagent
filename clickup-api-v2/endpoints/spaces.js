@@ -36,42 +36,46 @@ class Spaces {
    * spaces.createSpace("My Space");
    */
   async createSpace(teamId, spaceName) {
-    const spaceCreated = await this.request.post(`${this.baseUrl}/team/${teamId}${pathUrl}`, {
-      'name': spaceName,
-      'multiple_assignees': true,
-      'features': {
-        'due_dates': {
-          'enabled': true,
-          'start_date': false,
-          'remap_due_dates': true,
-          'remap_closed_due_date': false
+    const spaceCreated = await this.request.post(
+        `${this.baseUrl}/team/${teamId}${pathUrl}`,
+        {
+          'name': spaceName,
+          'multiple_assignees': true,
+          'features': {
+            'due_dates': {
+              'enabled': true,
+              'start_date': false,
+              'remap_due_dates': true,
+              'remap_closed_due_date': false,
+            },
+            'time_tracking': {
+              'enabled': false,
+            },
+            'tags': {
+              'enabled': true,
+            },
+            'time_estimates': {
+              'enabled': true,
+            },
+            'checklists': {
+              'enabled': true,
+            },
+            'custom_fields': {
+              'enabled': true,
+            },
+            'remap_dependencies': {
+              'enabled': true,
+            },
+            'dependency_warning': {
+              'enabled': true,
+            },
+            'portfolios': {
+              'enabled': true,
+            },
+          },
         },
-        'time_tracking': {
-          'enabled': false
-        },
-        'tags': {
-          'enabled': true
-        },
-        'time_estimates': {
-          'enabled': true
-        },
-        'checklists': {
-          'enabled': true
-        },
-        'custom_fields': {
-          'enabled': true
-        },
-        'remap_dependencies': {
-          'enabled': true
-        },
-        'dependency_warning': {
-          'enabled': true
-        },
-        'portfolios': {
-          'enabled': true
-        }
-      }
-    }, { 'Authorization': this.apiKey });
+        {'Authorization': this.apiKey},
+    );
     return spaceCreated;
   }
 
@@ -88,7 +92,11 @@ class Spaces {
    * spaces.updateSpace(123, "My Space edited");
    */
   async updateSpace(spaceId, name) {
-    const spaceUpdated = await this.request.put(`${this.baseUrl}${pathUrl}/${spaceId}`, { name: name }, { 'Authorization': this.apiKey });
+    const spaceUpdated = await this.request.put(
+        `${this.baseUrl}${pathUrl}/${spaceId}`,
+        {name: name},
+        {'Authorization': this.apiKey},
+    );
     return spaceUpdated;
   }
 
@@ -98,13 +106,17 @@ class Spaces {
    * @async
    * @method
    * @param {string|number} spaceId - The Space ID.
-   * @return {Promise<Object>} An empty object if the deletion was successful by ClickUp.
+   * @return {Promise<Object>} Empty object if the deletion was successful.
    * @example
    * // returns {}
    * spaces.deleteSpace(123);
    */
   async deleteSpace(spaceId) {
-    const spaceDeleted = await this.request.delete(`${this.baseUrl}${pathUrl}/${spaceId}`, { archived: false }, { 'Authorization': this.apiKey });
+    const spaceDeleted = await this.request.delete(
+        `${this.baseUrl}${pathUrl}/${spaceId}`,
+        {archived: false},
+        {'Authorization': this.apiKey},
+    );
     return spaceDeleted;
   }
 
@@ -116,11 +128,16 @@ class Spaces {
    * @param {string|number} teamId - The Team ID.
    * @return {Promise<Array.<Object>>} An Array of Spaces in a Team.
    * @example
-   * // returns [{id: 123, name: "Space 1", ...}, {id: 456, name: "Space 2", ...}]
+   * // returns [{id: 123, name: "Space 1", ...},
+   *  {id: 456, name: "Space 2", ...}]
    * spaces.getSpaces("TeamID");
    */
   async getSpaces(teamId) {
-    const spaces = await this.request.get(`${this.baseUrl}/team/${teamId}${pathUrl}`, { archived: false }, { 'Authorization': this.apiKey });
+    const spaces = await this.request.get(
+        `${this.baseUrl}/team/${teamId}${pathUrl}`,
+        {archived: false},
+        {'Authorization': this.apiKey},
+    );
     return spaces.spaces;
   }
 
@@ -136,10 +153,13 @@ class Spaces {
    * spaces.getSpace(123);
    */
   async getSpace(spaceId) {
-    const space = await this.request.get(`${this.baseUrl}${pathUrl}/${spaceId}`, { archived: false }, { 'Authorization': this.apiKey });
+    const space = await this.request.get(
+        `${this.baseUrl}${pathUrl}/${spaceId}`,
+        {archived: false},
+        {'Authorization': this.apiKey},
+    );
     return space;
   }
-
 }
 
 module.exports = Spaces;
