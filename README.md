@@ -68,6 +68,13 @@ npm run doc
     │   │   ├── 📜Teams.js
     │   │   └── 📜Views.js
     │   └── 📜ClickUpApi.js         # ClickUp API interface
+    ├── 📂diagrams                  # Diagrams in DrawIo
+    │   └── 📂architecture          # C4 Model Architecture
+    │       ├── 📜Architecture.drawio
+    │       ├── 📷Component ClickUp API module.png
+    │       ├── 📷Component Super Agent.png
+    │       ├── 📷Container.png
+    │       └── 📷Context.png
     ├── 📂docs                      # Folder to store the project documentation (GIT ignored by default)
     ├── 📂node_modules              # Folder to store all the project's dependencies (GIT ignored by default)
     ├── 📂Requesters                # Folder to store all HTTP request modules
