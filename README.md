@@ -99,6 +99,22 @@ npm run doc
     ├── ⚙package.json              # Project configuration
     └── 📄README
 
+## Project Architecture (c4 model view)
+
+### Container view
+![Context view](https://raw.githubusercontent.com/Aut-training/clickup-aut-api-superagent/dev/diagrams/architecture/Context.png)
+
+### Component view
+![Container view](https://raw.githubusercontent.com/Aut-training/clickup-aut-api-superagent/dev/diagrams/architecture/Container.png)
+
+### Component Super Agent view
+![Component Super Agent view](https://raw.githubusercontent.com/Aut-training/clickup-aut-api-superagent/dev/diagrams/architecture/Component%20Super%20Agent.png)
+
+### Component ClickUp API view
+![Component ClickUp API view](https://raw.githubusercontent.com/Aut-training/clickup-aut-api-superagent/dev/diagrams/architecture/Component%20ClickUp%20API%20module.png)
+
+## Class Diagram
+![Class Diagram](https://raw.githubusercontent.com/Aut-training/clickup-aut-api-superagent/dev/diagrams/class/Class%20Diagram.png)
 
 ## Debug with Visaul Studio Code
 
